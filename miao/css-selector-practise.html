@@ -7,7 +7,7 @@
       body > p:nth-child(1) {
         color: red;
       }
-      p[tabindex="-1"]:hover {
+      /* p[tabindex="-1"]:hover {
         color: red;
       }
       p[tabindex="-1"]:active {
@@ -15,6 +15,15 @@
       }
       p[tabindex="-1"]:focus {
         color: blue;
+      } */
+      p.a:focus {
+        color: blue;
+      }
+      p.a:hover {
+        color: red;
+      }
+      p.a:active {
+        color: green;
       }
       p.a.c > span:nth-child(1) {
         color: red;
@@ -31,13 +40,19 @@
       div a:link {
         color: pink;
       }
-      div a[href*="a@b.com"] {
+      /* div a[href*="a@b.com"] {
+        color: blue;
+      } */
+      div a[href*="mailto:" i] {
         color: blue;
       }
-      div a[href*="tel"] {
+      div a[href*="tel" i] {
         color: yellow;
       }
-      div a[href*="aaa"] {
+      /* div a[href*="aaa"] {
+        font-size: 30px;
+      } */
+      div a[href*="pdf" i] {
         font-size: 30px;
       }
       .a :nth-child(n + 4):nth-child(-n + 7) {
