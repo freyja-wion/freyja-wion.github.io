@@ -40,10 +40,7 @@
       div a[href*="aaa"] {
         font-size: 30px;
       }
-      .a :nth-child(4),
-      .a :nth-child(5),
-      .a :nth-child(6),
-      .a :nth-child(7) {
+      .a :nth-child(n + 4):nth-child(-n + 7) {
         color: red;
       }
       .b > ul > li {
