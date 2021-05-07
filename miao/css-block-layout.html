@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .title-wrapper {
+        background-color: black;
+        width: 100%;
+      }
+      .title {
+        color: white;
+        margin: auto;
+        width: 600px;
+      }
+      .content-wrapper {
+        margin: 16px 0;
+      }
+      .content {
+        width: 600px;
+        margin: auto;
+      }
+      table {
+        width: 600px;
+        margin: auto;
+      }
+      .table div {
+        font-size: 0;
+      }
+      .table p {
+        width: 180px;
+        height: 40px;
+        line-height: 34px;
+        background-color: pink;
+        border: 3px solid;
+        text-align: center;
+        box-sizing: border-box;
+        display: inline-block;
+        /* margin: 15px 30px; */
+        font-size: 16px;
+      }
+      .table p:nth-child(2) {
+        margin: 15px 30px 0 30px;
+      }
+      /* .table p:nth-child(1) {
+        margin-left: 0;
+      }
+      .table p:nth-child(3) {
+        margin-right: 0;
+      }
+      .table p:nth-child(n+4):nth-child(-n+6){
+        margin: 0;
+      } */
+      .link {
+        margin-top: 22px;
+      }
+      .link p {
+        margin: 1px;
+        border-bottom: 1px dotted;
+      }
+      .link p:nth-child(5) {
+        border-bottom: none;
+      }
+      .footer-wrapper {
+        background-color: violet;
+        margin: 16px 0;
+      }
+      .footer {
+        width: 600px;
+        margin: auto;
+      }
+      .footer > p {
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title-wrapper">
+      <div class="title">hello world 请调整浏览器窗口大小查看效果</div>
+    </div>
+    <div class="content-wrapper">
+      <div class="content">
+        <p>
+          页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体
+          宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+          页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体
+          宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+          页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体
+          宽度600px
+        </p>
+        <div class="table">
+          <div>
+            <p>宽180高40(包含边框)</p>
+            <p>产品</p>
+            <p>产品</p>
+          </div>
+          <div>
+            <p>水平间隙30px</p>
+            <p>产品</p>
+            <p>产品</p>
+          </div>
+          <div>
+            <p>垂直间隙15px</p>
+            <p>产品</p>
+            <p>产品</p>
+          </div>
+          <div>
+            <p>边框宽度3px</p>
+            <p>产品</p>
+            <p>产品</p>
+          </div>
+        </div>
+
+        <div class="link">
+          <p>link</p>
+          <p>link</p>
+          <p>link</p>
+          <p>link</p>
+          <p>link</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-wrapper">
+      <div class="footer">
+        <p>©版权所有</p>
+        <p>本页所有布局均使用块元素</p>
+      </div>
+    </div>
+  </body>
+</html>
