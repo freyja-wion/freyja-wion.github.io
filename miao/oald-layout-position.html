@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .content {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+      }
+      .first {
+        box-sizing: border-box;
+        width: 200px;
+        height: 100%;
+        background-color: mediumslateblue;
+        border-right: 2px solid;
+      }
+      .second {
+        position: absolute;
+        box-sizing: border-box;
+        width: calc(100vw - 600px);
+        height: 100px;
+        background-color: mediumspringgreen;
+        top: 0;
+        left: 200px;
+        border-bottom: 2px solid;
+      }
+      .third {
+        position: absolute;
+        box-sizing: border-box;
+        width: calc(100vw - 600px);
+        height: calc(100vh - 100px);
+        background-color: navajowhite;
+        top: 100px;
+        left: 200px;
+        overflow: auto;
+      }
+      .fourth {
+        position: absolute;
+        box-sizing: border-box;
+        width: 200px;
+        height: 100%;
+        background-color: orchid;
+        top: 0;
+        right: 200px;
+        border-left: 2px solid;
+      }
+      .fifth {
+        position: absolute;
+        box-sizing: border-box;
+        width: 200px;
+        height: 100%;
+        background-color: seagreen;
+        top: 0;
+        right: 0;
+        border-left: 2px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="first"></div>
+      <div class="second"></div>
+      <div class="third">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+          possimus doloremque mollitia consequatur earum, fugiat neque, deserunt
+          autem repellendus dolorum dolor laboriosam perspiciatis commodi
+          sapiente rerum dicta minima illo incidunt?Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Omnis unde perspiciatis vero voluptas
+          asperiores. Distinctio, necessitatibus. Voluptate et, quae soluta
+          quaerat porro, consectetur, impedit rem ducimus nesciunt excepturi
+          officia iste. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus eos enim minus a non, incidunt eveniet eaque suscipit sint
+          in iure voluptates, excepturi nobis, veritatis hic aut animi ab fugit.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate
+          minus nemo, nihil totam culpa at ratione sit consequuntur amet
+          molestiae voluptatibus laborum facilis labore. Repudiandae at autem
+          fugit veniam totam?Lorem ipsum dolor, sit amet consectetur adipisicing
+          elit. Animi, exercitationem. Tempore quidem vel rem eius hic harum,
+          dolore sequi numquam. Impedit et nobis consectetur est beatae optio
+          eius enim amet. Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Reprehenderit exercitationem quidem consequuntur sit ea maiores
+          est dolorem illum expedita veritatis eos repellat quaerat ducimus id,
+          voluptatibus eaque corrupti quasi quis.
+        </p>
+      </div>
+      <div class="fourth"></div>
+      <div class="fifth"></div>
+    </div>
+  </body>
+</html>
