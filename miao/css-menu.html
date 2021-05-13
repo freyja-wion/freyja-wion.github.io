@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css-menu</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-width: 600px;
+        font-size: 0;
+      }
+      header {
+        height: 30px;
+        width: 100%;
+        background-color: #1f2430;
+        position: relative;
+      }
+      img {
+        height: 20px;
+        margin-top: 5px;
+        margin-left: 5px;
+        padding-right: 10px;
+      }
+      span {
+        color: #cbccc6;
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 10px;
+        font-size: 14px;
+        line-height: 30px;
+        transition: all 1s linear;
+      }
+      .menu1 {
+        background-color: #2a303d;
+        height: 400px;
+        width: 200px;
+        background-color: #1f2430;
+        position: absolute;
+        left: 35px;
+        display: none;
+        padding: 0 20px;
+        font-size: 13px;
+      }
+      .menu2{
+        background-color: #2a303d;
+        height: 370px;
+        width: 200px;
+        box-shadow: 0 2px 2px #cbccc6;
+        position: absolute;
+        left: 100px;
+        display: none;
+        padding: 0 20px;
+        font-size: 13px;
+      }
+      .menu3{
+        background-color: #2a303d;
+        height: 490px;
+        width: 300px;
+        box-shadow: 0 2px 2px #cbccc6;
+        position: absolute;
+        left: 165px;
+        display: none;
+        padding: 0 20px;
+        font-size: 13px;
+      }
+      .menu4{
+        background-color: #2a303d;
+        height: 550px;
+        width: 200px;
+        box-shadow: 0 2px 2px #cbccc6;
+        position: absolute;
+        left: 230px;
+        display: none;
+        padding: 0 20px;
+        font-size: 13px;
+      }
+      span:hover [class*="menu"] {
+        background-color: #363a45;
+        display: block;
+        transition: all 1s linear;
+      }
+      .first {
+        text-align: left;
+      }
+      .last {
+        text-align: right;
+        margin-top: -30px;
+      }
+      [class*="menu"] > span {
+        display: block;
+        height: 1px;
+        width: 100%;
+        margin-left: -10px;
+        background-color: #cbccc67e;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./img 5.13/visual-studio-code-1.svg" alt="" />
+      <span
+        >文件(F)
+        <div class="menu1">
+          <p class="first">新建文件</p>
+          <p class="last">Ctrl+N</p>
+          <p class="first">新建窗口</p>
+          <p class="last">Ctrl+Shift+N</p>
+          <p class="first">打开文件</p>
+          <p class="last">Ctrl+O</p>
+          <p class="first">打开文件夹...</p>
+          <p class="last">Ctrl+Shift+O</p>
+          <span></span>
+          <p class="first">打开工作区...</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">打开最近的文件</p>
+          <p class="last">&nbsp;</p>
+          <span></span>
+          <p class="first">将文件夹添加到工作区...</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">将工作区另存为...</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">保存</p>
+          <p class="last">Ctrl+S</p>
+          <p class="first">另存为</p>
+          <p class="last">Ctrl+Shift+S</p>
+          <span></span>
+          <p class="first">自动保存</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">首选项</p>
+          <p class="last">&nbsp;</p>
+          <span></span>
+          <p class="first">退出</p>
+          <p class="last">&nbsp;</p>
+        </div>
+      </span>
+      <span>编辑(E)
+        <div class="menu2">
+          <p class="first">撤销</p>
+          <p class="last">Ctrl+Z</p>
+          <p class="first">恢复</p>
+          <p class="last">Ctrl+Y</p>
+          <span></span>
+          <p class="first">剪切</p>
+          <p class="last">Ctrl+X</p>
+          <p class="first">复制</p>
+          <p class="last">Ctrl+C</p>
+          <p class="first">粘贴</p>
+          <p class="last">Ctrl+V</p>
+          <span></span>
+          <p class="first">查找</p>
+          <p class="last">Ctrl+F</p>
+          <p class="first">替换</p>
+          <p class="last">Ctrl+H</p>
+          <span></span>
+          <p class="first">在文件中查找</p>
+          <p class="last">Ctrl+Shift+F</p>
+          <p class="first">在文件中替换</p>
+          <p class="last">Ctrl+Shift+H</p>
+          <span></span>
+          <p class="first">切换行注释</p>
+          <p class="last">Ctrl+/</p>
+          <p class="first">切换块注释</p>
+          <p class="last">Shift+Alt+A</p>
+          <p class="first">Emmet展开缩写</p>
+          <p class="last">Tab</p>
+        </div>
+      </span>
+      <span>选择(S)
+        <div class="menu3">
+         
+          <p class="first">全选</p>
+          <p class="last">Ctrl+A</p>
+          <p class="first">展开选定内容</p>
+          <p class="last">Shift+Alt+RightArrow</p>
+          <p class="first">缩小选定范围</p>
+          <p class="last">Shift+Alt+LeftArrow</p>
+          <span></span>
+          <p class="first">向上复制行</p>
+          <p class="last">Shift+Alt+UpArrow</p>
+          <p class="first">向下复制一行</p>
+          <p class="last">Shift+Alt+DownArrow</p>
+          <p class="first">向上移动一行</p>
+          <p class="last">Alt+UpArrow</p>
+          <p class="first">向下移动一行</p>
+          <p class="last">Alt+DownArrow</p>
+          <p class="first">重复选择</p>
+          <p class="last">&nbsp;</p>
+          <span></span>
+          <p class="first">在上面添加光标</p>
+          <p class="last">Ctrl+Alt+UpArrow</p>
+          <p class="first">在下面添加光标</p>
+          <p class="last">Ctrl+Alt+DownArrow</p>
+          <p class="first">在行尾添加光标</p>
+          <p class="last">Shift+Alt+L</p>
+          <p class="first">添加下一个匹配项</p>
+          <p class="last">CTRL+D</p>
+          <p class="first">添加上一个匹配项</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">选择所有匹配项</p>
+          <p class="last">Ctrl+Shift+L</p>
+          <span></span>
+          <p class="first">切换为"Ctrl+单击"进行多光标功能</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">列选择模式</p>
+          <p class="last">&nbsp;</p>
+        </div>
+      </span>
+      <span>查看(V)
+        <div class="menu4">
+          <p class="first">命令面板</p>
+          <p class="last">Ctrl+Shift+P</p>
+          <p class="first">打开视图...</p>
+          <p class="last">&nbsp;</p>
+          <span></span>
+          <p class="first">外观</p>
+          <p class="last">></p>
+          <p class="first">编辑器布局</p>
+          <p class="last">></p></p>
+          <span></span>
+          <p class="first">资源管理器</p>
+          <p class="last">Ctrl+Shift+E</p>
+          <p class="first">搜索</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">SCM</p>
+          <p class="last">Ctrl+Shift+G</p>
+          <p class="first">运行</p>
+          <p class="last">Ctrl+Shift+D</p>
+          <p class="first">扩展</p>
+          <p class="last">Ctrl+Shift+X</p>
+          <span></span>
+          <p class="first">问题</p>
+          <p class="last">Ctrl+Shift+M</p>
+          <p class="first">输出</p>
+          <p class="last">Ctrl+Shift+U</p>
+          <p class="first">调试控制台</p>
+          <p class="last">Ctrl+Shift+Y</p>
+          <p class="first">终端</p>
+          <p class="last">Ctrl+`</p>
+          <span></span>
+          <p class="first">切换自动换行</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">显示缩略图</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">显示导航痕迹</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">呈现空格</p>
+          <p class="last">&nbsp;</p>
+          <p class="first">呈现控制字符</p>
+          <p class="last">&nbsp;</p>
+        </div>
+      </span>
+      <span>转到(G)</span>
+      <span>运行(R)</span>
+      <span>终端(T)</span>
+      <span>帮助(H)</span>
+    </header>
+  </body>
+</html>
