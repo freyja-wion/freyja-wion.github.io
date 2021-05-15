@@ -13,9 +13,10 @@
         left: 200px;
         width: 204px;
         height: 124px;
-        border: 2px solid rgba(128, 128, 128, 0.301);
+        background-color: rgba(224, 223, 223, 0.301);
         border-radius: 62px;
-        transition: all 0.7s ;
+        box-shadow: 0 0 2px rgba(128, 128, 128, 0.301);
+        transition: all 0.3s ease-in-out;
       }
       input {
         display: none;
@@ -23,27 +24,29 @@
       .button::after {
         content: "";
         position: absolute;
-        top: 4px;
-        left: 5px;
+        top: 6px;
+        left: 6px;
         box-sizing: border-box;
         width: 112px;
         height: 112px;
         display: inline-block;
         background-color: white;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(128, 128, 128, 0.692);
-        transition:left 0.7s ease-in-out,width 0.5s;
-       
+        border-radius: 56px;
+        box-shadow: 0 0 4px rgba(128, 128, 128, 0.301);
+        transition: all 0.3s ease-in-out;
       }
       input:checked + label .button {
         background-color: #29f15b;
-        border: 2px solid transparent;
       }
       input:checked + label .button::after {
         position: absolute;
-        top: 4px;
-        left: 84px;
-        
+        left: 86px;
+      }
+      input:active + label .button::after {
+        width: 142px;
+      }
+      input:checked:active + label .button::after {
+        left: 56px;
       }
     </style>
   </head>
