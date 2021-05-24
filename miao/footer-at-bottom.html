@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>footer-at-bottom</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      .header {
+        height: 50px;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+        position: fixed;
+        width: 100%;
+        overflow: hidden;
+      }
+      .content-wrapper {
+        min-height: 100%;
+
+        position: relative;
+      }
+      .header span {
+        display: inline-block;
+        padding: 0 15px;
+        height: auto;
+        line-height: 50px;
+        color: #777777;
+      }
+      span:first-child {
+        margin-left: 85px;
+      }
+      .header span:hover {
+        color: rgb(66, 66, 66);
+        background-color: rgba(177, 177, 177, 0.425);
+      }
+      h3 {
+        padding: 20px 0;
+      }
+      .content {
+        padding: 50px 100px;
+      }
+      .footer {
+        height: 50px;
+        background-color: #f5f5f5;
+        position: relative;
+        margin-top: -50px;
+        clear: both;
+        box-sizing: border-box;
+        border-top: 1px solid rgba(211, 211, 211, 0.5);
+      }
+      .footer p {
+        text-align: center;
+        line-height: 50px;
+        color: #777777;
+      }
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper clearfix">
+      <div class="header">
+        <span>Name</span>
+        <span>Home</span>
+        <span>About</span>
+        <span>Contact</span>
+        <span>Dropdown</span>
+      </div>
+      <div class="content">
+        <h3>dwq fwefe wd</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem
+          molestiae enim maxime, laudantium assumenda at nemo inventore tempora
+          illo provident earum repudiandae autem ipsa, consequuntur, velit
+          deleniti culpa nam laboriosam.
+        </p>
+        <h3>jsc asas xa</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+          molestiae laudantium nam officiis ullam quaerat ipsa repudiandae hic
+          consequuntur dolorem sequi quisquam modi quae accusamus voluptatum ut
+          esse, culpa a?Lorem ipsum dolor, sit amet consectetur adipisicing
+          elit. Adipisci, ipsa similique eligendi officia nihil officiis,
+          expedita dolore iure deserunt consectetur, nesciunt deleniti
+          quibusdam. Rerum quaerat, officia illo labore repellendus provident.
+        </p>
+        <h3>dai lm ww</h3>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor at
+          quasi commodi neque beatae delectus, ipsam ut ab eum impedit eveniet
+          explicabo laudantium molestiae iusto nam aspernatur? Voluptates,
+          provident adipisci?Lorem, ipsum dolor sit amet consectetur adipisicing
+          elit. Repellat doloribus vitae similique quos deserunt exercitationem,
+          magni quia impedit vero eius quam inventore nobis quaerat? Eaque nam
+          nesciunt recusandae ipsa possimus.lor Lorem ipsum dolor sit amet
+          consectetur, adipisicing elit. Sequi corporis recusandae cum tempore
+          autem laudantium consequatur, ducimus debitis amet dolor totam veniam
+          incidunt iusto dolorum quidem doloremque deleniti fugit saepe!
+        </p>
+      </div>
+    </div>
+    <div class="footer">
+      <p>stiky footer</p>
+    </div>
+  </body>
+</html>
