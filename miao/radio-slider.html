@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>radio-slider</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .jd-wrapper {
+        width: 590px;
+        height: 470px;
+        position: relative;
+      }
+      .jd img {
+        width: 590px;
+        height: 470px;
+        position: absolute;
+        opacity: 0;
+      }
+      input:nth-child(1):checked ~ .jd img:nth-child(1),
+      input:nth-child(2):checked ~ .jd img:nth-child(2),
+      input:nth-child(3):checked ~ .jd img:nth-child(3),
+      input:nth-child(4):checked ~ .jd img:nth-child(4),
+      input:nth-child(5):checked ~ .jd img:nth-child(5),
+      input:nth-child(6):checked ~ .jd img:nth-child(6),
+      input:nth-child(7):checked ~ .jd img:nth-child(7),
+      input:nth-child(8):checked ~ .jd img:nth-child(8) {
+        opacity: 1;
+        transition: 1s all;
+      }
+      label {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.4);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 1px;
+        position: relative;
+      }
+      input {
+        display: none;
+      }
+      .label-wrapper {
+        position: absolute;
+        bottom: 15px;
+        left: 30px;
+        z-index: 999;
+      }
+      label::after {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        position: absolute;
+        top: -3px;
+        left: -3px;
+      }
+      label:hover {
+        background-color: white;
+      }
+      label:hover::after {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+      }
+      input:nth-child(1):checked ~ .label-wrapper label:nth-child(1),
+      input:nth-child(2):checked ~ .label-wrapper label:nth-child(2),
+      input:nth-child(3):checked ~ .label-wrapper label:nth-child(3),
+      input:nth-child(4):checked ~ .label-wrapper label:nth-child(4),
+      input:nth-child(5):checked ~ .label-wrapper label:nth-child(5),
+      input:nth-child(6):checked ~ .label-wrapper label:nth-child(6),
+      input:nth-child(7):checked ~ .label-wrapper label:nth-child(7),
+      input:nth-child(8):checked ~ .label-wrapper label:nth-child(8) {
+        background-color: white;
+      }
+      input:nth-child(1):checked ~ .label-wrapper label:nth-child(1)::after,
+      input:nth-child(2):checked ~ .label-wrapper label:nth-child(2)::after,
+      input:nth-child(3):checked ~ .label-wrapper label:nth-child(3)::after,
+      input:nth-child(4):checked ~ .label-wrapper label:nth-child(4)::after,
+      input:nth-child(5):checked ~ .label-wrapper label:nth-child(5)::after,
+      input:nth-child(6):checked ~ .label-wrapper label:nth-child(6)::after,
+      input:nth-child(7):checked ~ .label-wrapper label:nth-child(7)::after,
+      input:nth-child(8):checked ~ .label-wrapper label:nth-child(8)::after {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jd-wrapper">
+      <input type="radio" name="radio" id="radio1" checked />
+      <input type="radio" name="radio" id="radio2" />
+      <input type="radio" name="radio" id="radio3" />
+      <input type="radio" name="radio" id="radio4" />
+      <input type="radio" name="radio" id="radio5" />
+      <input type="radio" name="radio" id="radio6" />
+      <input type="radio" name="radio" id="radio7" />
+      <input type="radio" name="radio" id="radio8" />
+      <div class="label-wrapper">
+        <label for="radio1"></label>
+        <label for="radio2"></label>
+        <label for="radio3"></label>
+        <label for="radio4"></label>
+        <label for="radio5"></label>
+        <label for="radio6"></label>
+        <label for="radio7"></label>
+        <label for="radio8"></label>
+      </div>
+      <div class="jd">
+        <img
+          src="./radio-slider/2a1c5acada30c899.jpg.webp"
+          alt=""
+          class="first"
+        />
+        <img src="./radio-slider/710e63636a7d937a.jpg.webp" alt="" />
+        <img src="./radio-slider/c9087d0925392870.jpg.webp" alt="" />
+        <img src="./radio-slider/d15ababeebbaa6c8.jpg.webp" alt="" />
+        <img src="./radio-slider/q (1).jpg" alt="" />
+        <img src="./radio-slider/q (2).jpg" alt="" />
+        <img src="./radio-slider/q (3).jpg" alt="" />
+        <img src="./radio-slider/q.jpg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>
