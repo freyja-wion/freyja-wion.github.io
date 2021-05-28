@@ -1,0 +1,220 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font: 14px/1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+    Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  color: #333;
+  background-color: #fff;
+  min-width: 1226px;
+}
+.header-wrapper {
+  height: 40px;
+  background-color: #333333;
+}
+.header {
+  width: 1226px;
+  margin: 0 auto;
+}
+.header a {
+  color: #b0b0b0;
+  font-size: 12px;
+  line-height: 40px;
+}
+.header a::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background-color: #424242;
+  margin: 0 4px 0 8px;
+  vertical-align: middle;
+}
+.left a:hover,
+.right a:hover {
+  color: white;
+  cursor: pointer;
+}
+.header a:last-child::after,
+.right a:nth-child(3)::after,
+.shoppingcart a::after {
+  display: none;
+}
+.left {
+  width: 794px;
+  display: flex;
+  justify-content: space-between;
+}
+.right {
+  width: 143px;
+  margin-top: -40px;
+  margin-right: 135px;
+  float: right;
+}
+.shoppingcart {
+  margin-top: -40px;
+  float: right;
+  width: 120px;
+  margin-left: 15px;
+  text-align: center;
+  background-color: #424242;
+  position: relative;
+}
+.shoppingcart i {
+  font-size: 20px;
+  color: #b0b0b0;
+  position: relative;
+  top: 3px;
+}
+.shoppinglist {
+  width: 316px;
+  height: 0;
+  overflow: hidden;
+  background-color: white;
+  position: absolute;
+  left: -196px;
+  box-shadow: -5px 5px 5px -4px rgba(0, 0, 0, 0.1),
+    5px 5px 5px -4px rgba(0, 0, 0, 0.1);
+  transition: height 0.5s;
+}
+.shoppinglist span {
+  font-size: 10px;
+  line-height: 100px;
+}
+.shoppingcart:hover {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+}
+.shoppingcart:hover a,
+.shoppingcart:hover i {
+  color: #ff6700;
+}
+.shoppingcart:hover .shoppinglist {
+  height: 100px;
+  transition: height 0.5s;
+}
+.navigation {
+  height: 100px;
+  background-color: white;
+  width: 1226px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  width: 56px;
+  height: 56px;
+  padding: 22px 0;
+}
+.logo img {
+  width: 56px;
+  height: 56px;
+}
+.product {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding-left: 102px;
+  padding-top: 12px;
+}
+.product span {
+  padding: 26px 10px 38px 10px;
+}
+input {
+  background: none;
+  outline: none;
+  border: none;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: 0.3s all;
+}
+#searchtext {
+  width: 223px;
+  height: 48px;
+  padding: 0 10px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  transition: 0.3s all;
+}
+#searchbtn {
+  width: 52px;
+  height: 50px;
+  padding: 1px 6px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  transition: 0.3s all;
+}
+#searchbtn i {
+  color: #616161;
+  font-size: 18px;
+}
+.search:hover #searchtext,
+.search:hover #searchbtn {
+  border-color: #b0b0b0;
+  transition: 0.3s all;
+}
+#searchbtn:hover {
+  background-color: #ff6700;
+  transition: 0.3s all;
+  cursor: pointer;
+  border: none;
+}
+#searchbtn:hover i {
+  color: white;
+}
+.appcode-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.appcode-wrapper::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-right: 8px solid transparent;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid white;
+  border-left: 8px solid transparent;
+  position: absolute;
+  top: 24px;
+  left: 15px;
+  display: none;
+}
+.appcode {
+  width: 124px;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  left: -40px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 1;
+  font-size: 14px;
+  color: black;
+  transition: 0.3s height;
+  overflow: hidden;
+}
+.appcode img {
+  width: 90px;
+  height: 90px;
+  margin: 18px 17px 10px 17px;
+}
+.appcode-wrapper:hover .appcode {
+  height: 148px;
+  transition: 0.3s height;
+}
+.appcode-wrapper:hover::before {
+  display: block;
+}
+.swiper{
+  width: 1226px;
+  height: 460px;
+  background-color: cadetblue;
+  margin: 0 auto;
+}
