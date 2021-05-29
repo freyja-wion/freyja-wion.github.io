@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1622276484122') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gouwuchekong:before {
+  content: "\f0179";
+}
+
+.icon-F:before {
+  content: "\f003d";
+}
+
+.icon-7:before {
+  content: "\e638";
+}
+
+.icon-15:before {
+  content: "\e639";
+}
+
+.icon-24huafei:before {
+  content: "\e66f";
+}
+
+.icon-gift:before {
+  content: "\e8e1";
+}
+
+.icon-arrowright:before {
+  content: "\e693";
+}
+
+.icon-message:before {
+  content: "\e706";
+}
+
+.icon-sousuo:before {
+  content: "\e718";
+}
+
+.icon-YUAN:before {
+  content: "\e785";
+}
+
+.icon-Sim-Card:before {
+  content: "\e6d4";
+}
+
+.icon-play-l:before {
+  content: "\e63d";
+}
+
+.icon-location:before {
+  content: "\e60b";
+}
+
+.icon-Arrowrightnext:before {
+  content: "\e9d4";
+}
+
+.icon-Building:before {
+  content: "\ea24";
+}
+
+.icon-clock:before {
+  content: "\e7b3";
+}
+
+.icon-ArrowRightCircle:before {
+  content: "\e612";
+}
+
+.icon-play:before {
+  content: "\e602";
+}
+
+.icon-tool:before {
+  content: "\e6ae";
+}
+
