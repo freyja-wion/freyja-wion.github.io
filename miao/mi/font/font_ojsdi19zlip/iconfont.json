@@ -41,6 +41,13 @@
       "unicode_decimal": 58991
     },
     {
+      "icon_id": "722171",
+      "name": "arrow-left",
+      "font_class": "previewleft",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
       "icon_id": "924381",
       "name": "gift",
       "font_class": "gift",
@@ -74,6 +81,13 @@
       "font_class": "YUAN",
       "unicode": "e785",
       "unicode_decimal": 59269
+    },
+    {
+      "icon_id": "5111510",
+      "name": "arrow_left",
+      "font_class": "arrow_left",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
     },
     {
       "icon_id": "6801914",

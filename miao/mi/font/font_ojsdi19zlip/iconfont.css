@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1622276484122') format('truetype');
+  src: url('iconfont.ttf?t=1622299868987') format('truetype');
 }
 
 .iconfont {
@@ -31,6 +31,10 @@
   content: "\e66f";
 }
 
+.icon-previewleft:before {
+  content: "\e75b";
+}
+
 .icon-gift:before {
   content: "\e8e1";
 }
@@ -49,6 +53,10 @@
 
 .icon-YUAN:before {
   content: "\e785";
+}
+
+.icon-arrow_left:before {
+  content: "\e61c";
 }
 
 .icon-Sim-Card:before {

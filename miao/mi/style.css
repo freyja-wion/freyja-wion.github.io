@@ -461,8 +461,8 @@ input {
   transition: 0.2s color;
   cursor: pointer;
 }
-.home-sub img:hover{
-  box-shadow:  0 0 10px 5px rgba(199, 199, 199, 0.329);
+.home-sub img:hover {
+  box-shadow: 0 0 10px 5px rgba(199, 199, 199, 0.329);
   transition: 0.2s all;
   cursor: pointer;
 }
@@ -504,13 +504,169 @@ input {
   width: 1240px;
   height: 340px;
   margin-left: -14px;
-  background-color: cornflowerblue;
+  display: flex;
+  position: relative;
 }
-.goods .row .flashscale{
+/* 秒杀时间 */
+.goods .row .flashscale {
   width: 234px;
   height: 300px;
   margin-left: 14px;
   padding-top: 39px;
   border-top: 1px solid red;
-  background-color: #F1EDED;
+  background-color: #f1eded;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.goods .row .flashscale h3 {
+  color: red;
+  font-size: 21px;
+  font-weight: normal;
+  width: 234px;
+  height: 31.5px;
+  padding-top: 15px;
+  text-align: center;
+}
+.goods .row .flashscale img {
+  width: 34px;
+  height: 53px;
+  margin: 25px 0px;
+}
+.goods .row .flashscale .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods .row .flashscale p {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 15px;
+  margin: 5px 0 28px 0;
+}
+.goods .row .flashscale .time i {
+  font-size: 28px;
+  width: 15px;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  font-style: normal;
+}
+.goods .row .flashscale span {
+  width: 46px;
+  height: 46px;
+  background-color: #605751;
+  font-size: 24px;
+  color: white;
+  line-height: 46px;
+  text-align: center;
+}
+.goods .row .slider {
+  height: 340px;
+  display: flex;
+  position: absolute;
+  transition: 1s all;
+}
+.goods .row .slider .product {
+  width: 234px;
+  height: 340px;
+  padding: 0;
+  background-color: white;
+  margin-right: 14px;
+}
+.goods .row .slider .product .content {
+  width: 234px;
+  height: 263px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.goods .row .slider .product .content img {
+  width: 160px;
+  height: 166px;
+  margin: 0 37px 22px 27px;
+}
+.goods .row .slider .product .content .title {
+  padding: 0;
+  width: 194px;
+  height: 21px;
+  font-size: 14px;
+  color: #212121;
+  margin: 0 20px 3px 20px;
+}
+.goods .row .slider .product .content > span {
+  font-size: 12px;
+  padding: 0;
+  color: #b0b0b0;
+  margin: 0 20px 12px 20px;
+}
+.goods .row .slider .product .content .price span {
+  padding: 0;
+  font-size: 14px;
+  color: #ff6700;
+}
+.goods .row .slider .product .content .price del {
+  font-size: 14px;
+  color: #b0b0b0;
+}
+.goods .row .slider .product:nth-child(1),
+.goods .row .slider .product:nth-child(5) {
+  border-top: 1px solid #ffac13;
+}
+.goods .row .slider .product:nth-child(2),
+.goods .row .slider .product:nth-child(6) {
+  border-top: 1px solid #83c44e;
+}
+.goods .row .slider .product:nth-child(3),
+.goods .row .slider .product:nth-child(7) {
+  border-top: 1px solid #2196f3;
+}
+.goods .row .slider .product:nth-child(4),
+.goods .row .slider .product:nth-child(8) {
+  border-top: 1px solid red;
+}
+/* 轮播图外部容器 */
+.slider-container {
+  position: relative;
+  width: 978px;
+  height: 340px;
+  margin-left: 14px;
+  overflow: hidden;
+}
+/* 轮播图按钮 */
+.swipe-button {
+  display: flex;
+  width: 71px;
+  height: 24px;
+  position: absolute;
+  right: 0;
+  top: -40px;
+}
+.swipe-button label:first-child{
+  width: 24px;
+  height: 16px;
+  padding: 3px 5px;
+  border:1px solid #b0b0b0
+}
+.swipe-button label + label{
+  width: 24px;
+  height: 16px;
+  padding: 3px 5px;
+  border:1px solid #b0b0b0;
+  margin-left: -1px;
+}
+.swipe-button label {
+  color: #b0b0b0;
+  text-align: center;
+}
+.slider-container input{
+  display: none;
+}
+.slider-container input:nth-child(1):checked ~ .slider{
+  transform: translateX(0);
+  transition: 1s all;
+}
+.slider-container input:nth-child(2):checked ~ .slider{
+  transform: translateX(-992px);
+  transition: 1s all;
 }
