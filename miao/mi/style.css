@@ -1241,7 +1241,7 @@ input {
   align-items: center;
   position: fixed;
   right: 0;
-  bottom: 80px;
+  bottom: 30px;
 }
 .sidebar-small li{
   border: 1px solid #F5F5F5;
