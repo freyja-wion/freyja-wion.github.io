@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1622299868987') format('truetype');
+  src: url('iconfont.ttf?t=1622380340466') format('truetype');
 }
 
 .iconfont {
@@ -31,6 +31,10 @@
   content: "\e66f";
 }
 
+.icon-gouwuche:before {
+  content: "\e7e6";
+}
+
 .icon-previewleft:before {
   content: "\e75b";
 }
@@ -43,12 +47,20 @@
   content: "\e693";
 }
 
+.icon-wechat:before {
+  content: "\e63b";
+}
+
 .icon-message:before {
   content: "\e706";
 }
 
 .icon-sousuo:before {
   content: "\e718";
+}
+
+.icon-upward:before {
+  content: "\e61f";
 }
 
 .icon-YUAN:before {
@@ -59,8 +71,16 @@
   content: "\e61c";
 }
 
+.icon-arrow_right:before {
+  content: "\e61d";
+}
+
 .icon-Sim-Card:before {
   content: "\e6d4";
+}
+
+.icon-kefu:before {
+  content: "\e697";
 }
 
 .icon-play-l:before {
@@ -79,8 +99,20 @@
   content: "\ea24";
 }
 
+.icon-Phone:before {
+  content: "\e6b3";
+}
+
 .icon-clock:before {
   content: "\e7b3";
+}
+
+.icon-weibo:before {
+  content: "\e633";
+}
+
+.icon-weixiu:before {
+  content: "\e74b";
 }
 
 .icon-ArrowRightCircle:before {
@@ -93,5 +125,9 @@
 
 .icon-tool:before {
   content: "\e6ae";
+}
+
+.icon-geren:before {
+  content: "\e627";
 }
 

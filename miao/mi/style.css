@@ -573,6 +573,9 @@ input {
   background-color: white;
   margin-right: 14px;
 }
+.goods .row .slider .product:hover {
+  cursor: pointer;
+}
 .goods .row .slider .product .content {
   width: 234px;
   height: 263px;
@@ -586,7 +589,9 @@ input {
   height: 166px;
   margin: 0 37px 22px 27px;
 }
-.goods .row .slider .product .content .title {
+.goods .row .slider .product .content .title,
+.phone-box .xiaomi .phones .title,
+.home-brick-box .right .home .title {
   padding: 0;
   width: 194px;
   height: 21px;
@@ -594,18 +599,24 @@ input {
   color: #212121;
   margin: 0 20px 3px 20px;
 }
-.goods .row .slider .product .content > span {
+.goods .row .slider .product .content > span,
+.phone-box .xiaomi .phones > span,
+.home-brick-box .right .home > span {
   font-size: 12px;
   padding: 0;
   color: #b0b0b0;
   margin: 0 20px 12px 20px;
 }
-.goods .row .slider .product .content .price span {
+.goods .row .slider .product .content .price span,
+.phone-box .xiaomi .phones .price span,
+.home-brick-box .right .home .price span {
   padding: 0;
   font-size: 14px;
   color: #ff6700;
 }
-.goods .row .slider .product .content .price del {
+.goods .row .slider .product .content .price del,
+.phone-box .xiaomi .phones .price del,
+.home-brick-box .right .home .price del {
   font-size: 14px;
   color: #b0b0b0;
 }
@@ -642,31 +653,633 @@ input {
   right: 0;
   top: -40px;
 }
-.swipe-button label:first-child{
+.swipe-button label:first-child {
   width: 24px;
   height: 16px;
   padding: 3px 5px;
-  border:1px solid #b0b0b0
+  border: 1px solid #b0b0b0;
 }
-.swipe-button label + label{
+.swipe-button label + label {
   width: 24px;
   height: 16px;
   padding: 3px 5px;
-  border:1px solid #b0b0b0;
+  border: 1px solid #b0b0b0;
   margin-left: -1px;
 }
-.swipe-button label {
+.swipe-button label::after,
+.swipe-button label + label::after {
+  display: block;
+  font-family: iconfont;
+  position: absolute;
+  bottom: 1px;
   color: #b0b0b0;
-  text-align: center;
+  transition: 0.3s color;
 }
-.slider-container input{
+.swipe-button label::after {
+  content: "\e61c";
+  left: 10px;
+}
+.swipe-button label + label::after {
+  content: "\e61d";
+  left: 47px;
+}
+.slider-container input {
   display: none;
 }
-.slider-container input:nth-child(1):checked ~ .slider{
+.swipe-button label:hover::after {
+  color: #ff6700;
+  transition: 0.3s color;
+  cursor: pointer;
+}
+/* 轮播图动画 */
+.slider-container input:nth-child(1):checked ~ .slider {
   transform: translateX(0);
   transition: 1s all;
 }
-.slider-container input:nth-child(2):checked ~ .slider{
+.slider-container input:nth-child(2):checked ~ .slider {
   transform: translateX(-992px);
   transition: 1s all;
+}
+/* 商品栏下方图片 */
+.home-banner-box {
+  width: 1226px;
+  height: 120px;
+  margin: 22px 0;
+}
+.home-banner-box img {
+  width: 100%;
+}
+.home-banner-box:hover {
+  cursor: pointer;
+}
+.goods h2 .more {
+  float: right;
+  font-size: 16px;
+  font-weight: normal;
+  color: #424242;
+  position: relative;
+  right: 25px;
+  transition: 0.3s color;
+}
+.goods h2 .more::after {
+  content: "\e9d4";
+  display: block;
+  font-family: iconfont;
+  position: absolute;
+  top: 0;
+  right: -28px;
+  font-size: 25px;
+  color: #b0b0b0;
+  transition: 0.3s color;
+}
+.goods h2 .more:hover,
+.goods h2 .more:hover::after {
+  color: #ff6700;
+  cursor: pointer;
+  transition: 0.3s color;
+}
+/* 手机 */
+.phone-box {
+  width: 1226px;
+  height: 614px;
+  display: flex;
+}
+.phone-box .fold {
+  width: 234px;
+  height: 614px;
+  margin-right: 14px;
+  transition: 0.2s;
+}
+.phone-box .fold img {
+  width: 100%;
+}
+.phone-box .xiaomi {
+  width: 992px;
+  height: 628px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -14px;
+  margin-bottom: -14px;
+}
+/* 所有商品容器样式 */
+.phone-box .xiaomi .phones,
+.home-brick-box .right .home {
+  width: 234px;
+  height: 260px;
+  background-color: white;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 14px 14px 0;
+  transition: 0.2s;
+}
+.phone-box .xiaomi .phones img,
+.home-brick-box .right .home img {
+  width: 160px;
+  height: 160px;
+  margin: 0 37px 18px 37px;
+}
+.phone-box .xiaomi .phones:hover,
+.phone-box .fold:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+  box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+  cursor: pointer;
+}
+.home-banner-box#tv-scale {
+  margin-top: 36px;
+}
+/* 家电 */
+.home-brick-box {
+  width: 1226px;
+  height: 628px;
+  margin-bottom: 8px;
+  display: flex;
+}
+.home-brick-box .left {
+  width: 248px;
+  height: 614px;
+  margin: 0 0 -14px -14px;
+  display: flex;
+  flex-direction: column;
+}
+.left .stop {
+  width: 234px;
+  height: 300px;
+  margin: 0 0 14px 14px;
+}
+.left .stop img {
+  width: 100%;
+}
+.home-brick-box .right {
+  width: 978px;
+  height: 628px;
+  margin-left: 14px;
+  margin-top: 0;
+  position: relative;
+}
+.home-brick-box .right .right1,
+.home-brick-box .right .right2 {
+  display: flex;
+  width: 992px;
+  height: 628px;
+  flex-wrap: wrap;
+  position: absolute;
+}
+.home-brick-box .right .right1 .home-menu,
+.home-brick-box .right .right2 .home-menu {
+  width: 234px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 14px 14px 0;
+  transition: 0.2s;
+}
+.home-brick-box .right .right1 .home-menu .top,
+.home-brick-box .right .right1 .home-menu .bottom,
+.home-brick-box .right .right2 .home-menu .top,
+.home-brick-box .right .right2 .home-menu .bottom {
+  width: 234px;
+  height: 93px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 50px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.home-brick-box .right .right1 .home-menu .top .title,
+.home-brick-box .right .right2 .home-menu .top .title {
+  width: 94px;
+  height: 42px;
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+  margin: -10px 110px 5px 30px;
+}
+.home-brick-box .right .right1 .home-menu .top .price,
+.home-brick-box .right .right2 .home-menu .top .price {
+  width: 94px;
+  height: 21px;
+  margin: 0 110px 0 30px;
+  font-size: 14px;
+  color: #ff6700;
+}
+.home-brick-box .right .right1 .home-menu .top img,
+.home-brick-box .right .right2 .home-menu .top img {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 32px;
+  right: 20px;
+}
+.home-brick-box .right .right1 .home-menu .bottom,
+.home-brick-box .right .right2 .home-menu .bottom {
+  margin-bottom: 0;
+}
+.home-brick-box .right .right1 .home-menu .bottom i,
+.home-brick-box .right .right2 .home-menu .bottom i {
+  font-size: 58px;
+  display: block;
+  color: #ff6700;
+  position: absolute;
+  top: 28px;
+  right: 30px;
+}
+.home-brick-box .right .right1 .home-menu .bottom .more,
+.home-brick-box .right .right2 .home-menu .bottom .more {
+  font-size: 18px;
+  font-weight: 400;
+  width: 94px;
+  height: 45px;
+  margin: -19px 110px 0 30px;
+}
+
+.home-brick-box .right .right1 .home-menu .bottom small,
+.home-brick-box .right .right2 .home-menu .bottom small {
+  font-size: 12px;
+  color: #616161;
+  display: block;
+  width: 94px;
+  height: 18px;
+  margin: 0 110px 0 30px;
+}
+/* 商品页面切换按钮 */
+.home-brick-box .right input {
+  display: none;
+}
+.home-brick-box .right .home-label-wrapper {
+  position: absolute;
+  right: -135px;
+  top: -40px;
+  font-size: 16px;
+}
+.home-brick-box .right .home-label-wrapper label {
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s all;
+}
+.home-brick-box .right .home-label-wrapper label:hover {
+  color: #ff6700;
+  text-decoration: underline;
+  transition: 0.3s all;
+}
+.home-brick-box .right input:nth-child(2):hover ~ .right1 {
+  z-index: 9;
+}
+.home-brick-box .right input:nth-child(3):hover ~ .right2 {
+  z-index: 9;
+}
+/* 家电页hover样式 */
+.home-brick-box .left .stop:hover,
+.home-brick-box .right .home:hover,
+.home-brick-box .right .home-menu .top:hover,
+.home-brick-box .right .home-menu .bottom:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+  box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+  cursor: pointer;
+}
+/* 视频样式 */
+.video-box {
+  width: 1240px;
+  height: 299px;
+  display: flex;
+}
+.video-item {
+  background-color: white;
+  width: 296px;
+  height: 285px;
+  margin: 0 14px 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: 0.2s;
+}
+.video-item img {
+  width: 296px;
+  height: 180px;
+  margin-bottom: 28px;
+}
+.video-item h3 {
+  width: 268px;
+  height: 21px;
+  margin: 28px 0 14 0px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.video-item p {
+  width: 268px;
+  height: 18px;
+  color: #b0b0b0;
+  font-size: 12px;
+}
+.video-item:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: 0.2s;
+  box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+}
+/* 播放按钮 */
+.video-item .img-box::before {
+  content: "\e63d";
+  display: block;
+  font-family: iconfont;
+  position: absolute;
+  top: 140px;
+  left: 20px;
+  font-size: 25px;
+  color: white;
+  transition: 0.3s color;
+  z-index: 9;
+}
+.video-item .img-box {
+  position: relative;
+}
+.video-item .img-box:hover::before {
+  color: #ff6700;
+}
+/* 底部 */
+.footer-service {
+  width: 1226px;
+  height: 25px;
+  padding: 27px 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0 auto;
+  display: flex;
+}
+.footer-service li {
+  list-style: none;
+  font-size: 16px;
+  color: #616161;
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 0.3s all;
+}
+.footer-service li i {
+  font-size: 24px;
+  margin: 0 6px;
+}
+.footer-service li::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 25px;
+  position: absolute;
+  background-color: #e0e0e0;
+  right: 0;
+}
+.footer-service li:last-child::after {
+  display: none;
+}
+.footer-service li:hover {
+  color: #ff6700;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.footer-links {
+  width: 1226px;
+  height: 172.5px;
+  padding: 40px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.footer-links ul {
+  width: 160px;
+  height: 0;
+  flex: 1;
+}
+.footer-links ul li {
+  list-style: none;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #757575;
+}
+.footer-links ul li:hover {
+  color: #ff6700;
+  cursor: pointer;
+}
+.footer-links ul li:first-child {
+  font-size: 14px;
+  color: #424242;
+  margin: -1px 0 26px 0;
+}
+.footer-links .right {
+  width: 252px;
+
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border-left: 1px solid #e0e0e0;
+}
+.footer-links .right .number {
+  font-size: 22px;
+  color: #ff6700;
+}
+.footer-links .right .time {
+  font-size: 12px;
+  color: #616161;
+  margin-bottom: 5px;
+}
+.footer-links .right button {
+  width: 118px;
+  height: 28px;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #ff6700;
+  border-radius: 0;
+  color: #ff6700;
+  font-size: 12px;
+  align-self: center;
+  position: relative;
+  transition: 0.5s color;
+}
+.footer-links .right button i {
+  font-size: 12px;
+}
+.footer-links .right .notice {
+  font-size: 12px;
+  color: #616161;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.footer-links .right .notice i {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.footer-links .right button:hover {
+  background-color: #ff6700;
+  color: white;
+  transition: 0.5s color;
+  cursor: pointer;
+}
+.footer-links .right .notice i:hover {
+  color: #ff6700;
+}
+.site-info-wrapper {
+  background-color: #fafafa;
+}
+.site-info {
+  width: 1226px;
+  height: 205px;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+.container > img {
+  width: 56px;
+  height: 56px;
+  margin-right: 10px;
+  position: absolute;
+}
+.info-text {
+  width: 1159px;
+  height: 109px;
+  padding-left: 67px;
+}
+.info-text .sites {
+  font-size: 12px;
+  color: #757575;
+}
+.info-text .sites a {
+  width: 1px;
+  height: 12px;
+  display: inline-block;
+  background-color: #b0b0b0;
+  transform: translateY(2px);
+}
+.info-text .sites span:hover{
+  cursor: pointer;
+  color: #ff6700;
+}
+.info-text .sites1 {
+  font-size: 12px;
+  color: #b0b0b0;
+  text-decoration: none;
+}
+.info-text .sites1 a {
+  text-decoration: none;
+  color: #b0b0b0;
+}
+.info-text .sites1 a:hover{
+  color: #ff6700;
+}
+.info-text img {
+  height: 28px;
+  width: auto;
+}
+.slogan {
+  margin-top: 60px;
+  text-align: center;
+  font-family: 楷体;
+  font-size: 24px;
+  color: #b0b0b0;
+}
+.sidebar{
+  height: 560px;
+  width: 82.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  bottom: 80px;
+  display: none;
+}
+.sidebar li{
+  border: 1px solid #F5F5F5;
+  height: 90px;
+  width: 82.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #999999;
+}
+.sidebar li:nth-child(n+2):nth-child(-n+5){
+  border-top: none;
+}
+.sidebar li i,
+.sidebar .last a{
+  font-size: 30px;
+}
+.sidebar .last{
+  margin-top: 16px;
+}
+.sidebar .last a{
+  text-decoration: none;
+  color: #999999;
+}
+.sidebar li:hover,
+.sidebar .last a:hover+span,
+.sidebar a:hover{
+  color: #ff6700;
+  cursor: pointer;
+}
+.sidebar-small{
+  width: 27px;
+  height: 261px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  bottom: 80px;
+}
+.sidebar-small li{
+  border: 1px solid #F5F5F5;
+  height: 40px;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #999999;
+}
+.sidebar-small li:nth-child(n+2):nth-child(-n+5){
+  border-top: none;
+}
+.sidebar-small .last{
+  margin-top: 16px;
+}
+.sidebar-small li:hover,
+.sidebar-small .last a:hover,
+.sidebar-small a:hover{
+  color: #ff6700;
+  cursor: pointer;
+}
+.sidebar-small .last a{
+  text-decoration: none;
+  color: #999999;
+}
+@media only screen and (min-width: 1920px) {
+  .sidebar{
+    display: block;
+  }
+  .sidebar-small{
+    display: none;
+  }
+}
+@media screen and (min-height:1080px){ 
+  .sidebar .last{
+    display: none;
+  }
 }
