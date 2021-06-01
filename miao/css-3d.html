@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cubic</title>
+    <style>
+      section {
+        position: relative;
+        top: 200px;
+        left: 200px;
+        transform-style: preserve-3d;
+        transform-origin: 100px 100px 0;
+      }
+      section div {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        background-image: url(./emoji/images.png);
+        background-size: 200px 200px;
+      }
+      .a {
+        background-color: rgb(0, 255, 255);
+        transform: translateZ(-100px);
+      }
+      .b {
+        background-color: brown;
+        transform: translateX(100px) rotateY(90deg);
+      }
+      .c {
+        background-color: burlywood;
+        transform: translateX(-100px) rotateY(90deg);
+      }
+      .d {
+        background-color: rgb(153, 50, 204);
+        transform: translateZ(100px);
+      }
+      .e {
+        background-color: dimgray;
+        transform: translateY(-100px) rotateX(90deg);
+      }
+      .f{
+        background-color:green;
+        transform: translateY(100px) rotateX(90deg);
+      }
+      @keyframes rotate-frame {
+        20% {
+            transform: rotateX(-180deg) rotateY(180deg);
+        }
+        30% {
+            transform: rotateX(-360deg) rotateY(180deg);
+        }
+        40% {
+            transform: rotateX(-360deg) rotateY(360deg);
+        }
+        50% {
+            transform: rotateX(-180deg) rotateY(360deg);
+        }
+        60% {
+            transform: rotateX(90deg) rotateY(180deg);
+        }
+        100% {
+            transform: rotateX(0) rotateY(0);
+        }
+      }
+      section{
+        animation: rotate-frame 30s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="a"></div>
+      <div class="b"></div>
+      <div class="c"></div>
+      <div class="d"></div>
+      <div class="e"></div>
+      <div class="f"></div>
+    </section>
+  </body>
+</html>
