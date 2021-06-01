@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      .clock {
+        width: 800px;
+        height: 800px;
+        border: 10px solid;
+        border-radius: 50%;
+        position: relative;
+      }
+      span {
+        position: absolute;
+        width: 10px;
+        height: 400px;
+        left: 395px;
+        transform-origin: 5px 400px;
+        display: flex;
+      }
+      span a {
+        font-size: 60px;
+        justify-content: center;
+      }
+      .one a,
+      .two a,
+      .three a,
+      .four a,
+      .five a,
+      .six a,
+      .seven a,
+      .eight a,
+      .nine a {
+        transform: translateX(-15px);
+      }
+      .four a,
+      .five a,
+      .six a,
+      .seven a,
+      .eight a{
+        transform: rotateZ(180deg);
+        transform-origin: 5px 40px;
+      }
+      .three a{
+        transform: rotateZ(-90deg);
+        transform-origin: 5px 40px;
+      }
+      .nine a{
+        transform: rotateZ(90deg);
+        transform-origin: 10px 30px;
+      }
+      .ten a,
+      .eleven a,
+      .twelve a {
+        transform: translateX(-30px);
+      }
+      .clock span:nth-child(1) {
+        transform: rotateZ(30deg);
+      }
+      .clock span:nth-child(2) {
+        transform: rotateZ(60deg);
+      }
+      .clock span:nth-child(3) {
+        transform: rotateZ(90deg);
+      }
+      .clock span:nth-child(4) {
+        transform: rotateZ(120deg);
+      }
+      .clock span:nth-child(5) {
+        transform: rotateZ(150deg);
+      }
+      .clock span:nth-child(6) {
+        transform: rotateZ(180deg);
+      }
+      .clock span:nth-child(7) {
+        transform: rotateZ(210deg);
+      }
+      .clock span:nth-child(8) {
+        transform: rotateZ(240deg);
+      }
+      .clock span:nth-child(9) {
+        transform: rotateZ(270deg);
+      }
+      .clock span:nth-child(10) {
+        transform: rotateZ(300deg);
+      }
+      .clock span:nth-child(11) {
+        transform: rotateZ(330deg);
+      }
+      .shizhen {
+        position: absolute;
+        height: 250px;
+        width: 10px;
+        background-color: rgb(0, 0, 0);
+        left: 400px;
+        top: 150px;
+        transform-origin: 5px 250px;
+        animation: shizhenrotate 21600s linear infinite ;
+      }
+      .fenzhen {
+        position: absolute;
+        height: 300px;
+        width: 10px;
+        background-color: rgb(68, 68, 68);
+        left: 400px;
+        top: 100px;
+        transform: rotateZ(20deg);
+        transform-origin: 5px 300px;
+        animation: fenzhenrotate 3600s linear infinite ;
+      }
+      .miaozhen {
+        position: absolute;
+        height: 350px;
+        width: 10px;
+        background-color: rgb(255, 0, 0);
+        left: 400px;
+        top: 50px;
+        transform: rotateZ(30deg);
+        transform-origin: 5px 350px;
+        animation: miaozhenrotate 60s linear infinite ;
+      }
+      .point{
+        width: 30px;
+        height: 30px;
+        background-color: rgb(255, 0, 0);
+        border-radius: 50%;
+        position: absolute;
+        left: 390px;
+        top: 390px;
+      }
+      @keyframes miaozhenrotate {
+        0%{
+          transform: rotateZ(30deg);
+        }
+        50%{
+          transform: rotateZ(240deg);
+        }
+        100%{
+          transform: rotateZ(390deg);
+        }
+      }
+      @keyframes fenzhenrotate {
+        0%{
+          transform: rotateZ(30deg);
+        }
+        50%{
+          transform: rotateZ(240deg);
+        }
+        100%{
+          transform: rotateZ(390deg);
+        }
+      }
+      @keyframes shizhenrotate {
+        0%{
+          transform: rotateZ(0deg);
+        }
+        50%{
+          transform: rotateZ(180deg);
+        }
+        100%{
+          transform: rotateZ(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <span class="one">
+        <a>1</a>
+      </span>
+      <span class="two">
+        <a>2</a>
+      </span>
+      <span class="three">
+        <a>3</a>
+      </span>
+      <span class="four">
+        <a>4</a>
+      </span>
+      <span class="five">
+        <a>5</a>
+      </span>
+      <span class="six">
+        <a>6</a>
+      </span>
+      <span class="seven">
+        <a>7</a>
+      </span>
+      <span class="eight">
+        <a>8</a>
+      </span>
+      <span class="nine">
+        <a>9</a>
+      </span>
+      <span class="ten">
+        <a>10</a>
+      </span>
+      <span class="eleven">
+        <a>11</a>
+      </span>
+      <span class="twelve">
+        <a>12</a>
+      </span>
+      <div class="shizhen">
+      </div>
+      <div class="fenzhen">
+
+      </div>
+      <div class="miaozhen">
+
+      </div>
+      <div class="point">
+
+      </div>
+    </div>
+  </body>
+</html>

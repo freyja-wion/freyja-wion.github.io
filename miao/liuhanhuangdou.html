@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>haha</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        animation: move 5s infinite;
+      }
+      div img {
+        width: 100%;
+      }
+      @keyframes move {
+        0% {
+          width: 200px;
+          height: 200px;
+        }
+        50% {
+          width: 400px;
+          height: 400px;
+          transform: translateX(800px) rotateY(360deg);
+        }
+        100% {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="./emoji/images.png" alt="" />
+    </div>
+  </body>
+</html>
