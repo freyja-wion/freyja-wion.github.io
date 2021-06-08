@@ -1,0 +1,120 @@
+<script id="ch0103/01" type="01">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  console.log(a + b);
+</script>
+<script id="ch0103/02" type="02">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  var c = parseInt(prompt("请输入c"));
+  console.log((a+b)*c)
+</script>
+<script id="ch0103/03" type="02">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  var c = parseInt(prompt("请输入c"));
+  console.log((a+b)/c)
+</script>
+<script id="ch0103/04" type="03">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  console.log(parseInt(a / b));
+  console.log(a % b);
+</script>
+<script id="ch0103/05" type="123">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  console.log((a / b).toFixed(9));
+</script>
+<script id="ch0103/06" type="1222">
+  var a = parseInt(prompt("请输入a"));
+  var b = parseInt(prompt("请输入b"));
+  console.log(((b / a) * 100).toFixed(3) + "%");
+</script>
+<script id="ch0103/07" type="wedqw">
+  var a = parseFloat(prompt("请输入a"));
+  var b = parseFloat(prompt("请输入b"));
+  var c = parseFloat(prompt("请输入c"));
+  var d = parseFloat(prompt("请输入d"));
+  var x = parseFloat(prompt("请输入x"));
+  console.log((a * x * x * x + b * x * x + c * x + d).toFixed(7));
+</script>
+<script id="ch0103/08" type="cwdw">
+  var f = Number(prompt("请输入华氏温度"));
+  console.log(((5 * (f - 32)) / 9).toFixed(5));
+</script>
+<script id="ch0103/09" type="wd">
+  var r = Number(prompt("请输入半径"));
+  console.log((2 * r).toFixed(4));
+  console.log((2 * Math.PI * r).toFixed(4));
+  console.log((Math.PI * r * r).toFixed(4));
+</script>
+<script id="ch0103/10" type="sdsd">
+  var r1 = parseFloat(prompt("请输入r1"));
+  var r2 = parseFloat(prompt("请输入r2"));
+  console.log((1 / (1 / r1 + 1 / r2)).toFixed(2));
+</script>
+<script id="ch0103/11" type="sdad">
+  var a = parseFloat(prompt("请输入a"));
+  var b = parseFloat(prompt("请输入b"));
+  var k = parseInt(a / b);
+  console.log(parseFloat(a - k * b));
+</script>
+<script id="ch0103/12" type="fef">
+  var r = Number(prompt("请输入半径"));
+  console.log((4/3*3.14*r*r*r).toFixed(2))
+</script>
+<script id="ch0103/13" type="sdsa">
+  var r = Number(prompt("请输入三位数"));
+  console.log(
+    String(r % 10) + String(parseInt((r % 100) / 10)) + String(parseInt(r / 100))
+    );
+</script>
+<script id="ch0103/14" type="cwec">
+  var h = parseInt(prompt("请输入深度"));
+  var r = parseInt(prompt("请输入半径"));
+  console.log(Math.ceil(20 / ((Math.PI * r * r * h) / 1000)));
+</script>
+<script id="ch0103/15" type="923">
+  var n = parseInt(prompt("请输入苹果个数"));
+  var x = parseInt(prompt("请输入x小时"));
+  var y = parseInt(prompt("请输入经过y小时"));
+  console.log(n-Math.ceil(y/x));
+</script>
+<script id="ch0103/16" type="csdfc">
+  var Xa = Number(prompt("请输入A的横坐标"));
+  var Ya = Number(prompt("请输入A的纵坐标"));
+  var Xb = Number(prompt("请输入B的横坐标"));
+  var Yb = Number(prompt("请输入B的纵坐标"));
+  console.log(
+    Math.sqrt((Xb - Xa) * (Xb - Xa) + (Yb - Ya) * (Yb - Ya)).toFixed(3)
+  );
+</script>
+<script id="ch0103/17" type="dasd">
+  var X1 = Number(prompt("请输入A的横坐标"));
+  var Y1 = Number(prompt("请输入A的纵坐标"));
+  var X2 = Number(prompt("请输入B的横坐标"));
+  var Y2 = Number(prompt("请输入B的纵坐标"));
+  var X3 = Number(prompt("请输入C的横坐标"));
+  var Y3 = Number(prompt("请输入C的纵坐标"));
+  var a = Math.sqrt((X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1));
+  var b = Math.sqrt((X3 - X1) * (X3 - X1) + (Y3 - Y1) * (Y3 - Y1));
+  var c = Math.sqrt((X3 - X2) * (X3 - X2) + (Y3 - Y2) * (Y3 - Y2));
+  var p = (a + b + c) / 2;
+  console.log(Math.sqrt(p * (p - a) * (p - b) * (p - c)).toFixed(2));
+</script>
+<script id="ch0103/18" type="dasd">
+  var a1 = parseInt(prompt("请输入a1"));
+  var a2 = parseInt(prompt("请输入a2"));
+  var n = parseInt(prompt("请输入n"));
+  console.log(a1 + (n - 1) * (a2 - a1));
+</script>
+<script id="ch0103/19" type="cdas">
+  var a = +parseInt(prompt("请输入A"));
+  var b = +parseInt(prompt("请输入B"));
+  console.log(a * b);
+</script>
+<script id="ch0103/20">
+  var n = +parseInt(prompt("请输入n"));
+  console.log(Math.pow(2, n));
+</script>
