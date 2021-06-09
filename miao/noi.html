@@ -148,9 +148,9 @@
   var a = (prompt("请输入字符"));
   var b = a.charCodeAt()
   if (b % 2 != 0) {
-    console.log("odd");
+    console.log("YES");
   } else if (b % 2 == 0) {
-    console.log("even");
+    console.log("NO");
   }
 </script>
 <script id="ch0104/05" type="sd">
@@ -284,10 +284,10 @@
   console.log(b);
 </script>
 <script id="ch0104/16" type="dsd">
-  var a = parseInt(prompt("请输入a"));
-  var b = parseInt(prompt("请输入b"));
-  var c = parseInt(prompt("请输入c"));
-  if (a + b > c && b + c > a && a + c > b) {
+  var a = +parseInt(prompt("请输入a"));
+  var b = +parseInt(prompt("请输入b"));
+  var c = +parseInt(prompt("请输入c"));
+  if ((a + b) > c && (b + c) > a && (a + c) > b) {
     console.log("Yes");
   } else {
     console.log("No");
