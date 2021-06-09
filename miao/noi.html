@@ -377,3 +377,87 @@
   var y = parseFloat(prompt("请输入y"));
   console.log(n-Math.ceil(y/x));
 </script>
+<script id="ch0105/01" type="sd">
+  var n = parseInt(prompt("请输入学生人数"));
+  var sum = 0;
+  for (var i = 0; i < n; i++) {
+    var a = parseInt(prompt("请输入学生年龄"));
+    sum += a;
+  }
+  console.log((sum/n).toFixed(2))
+</script>
+<script id="ch0105/02" type="csc">
+  var sum = 0;
+  for (let i = 0; i < 12; i++) {
+    var x = parseFloat(prompt("请输入当月结余"));
+    sum += x;
+  }
+  console.log("$" + (sum / 12).toFixed(2));
+</script>
+<script id="ch0105/03" type="dsf">
+  var n = parseInt(prompt("请输入样本容量"));
+  var sum = 0;
+  for (var i = 0; i < n; i++) {
+    var a = parseFloat(prompt("请输入样本数据"));
+    sum += a;
+  }
+  console.log((sum/n).toFixed(4))
+</script>
+<script id="ch0105/04" type="dasd">
+  var n = parseInt(prompt("请输入整数数量"));
+  var sum = 0;
+  for (var i = 0; i < n; i++) {
+    var a = parseInt(prompt("请输入整数"));
+    sum += a;
+  }
+  console.log(sum)
+  console.log((sum / n).toFixed(5));
+</script>
+<script id="ch0105/05" type="fdasf">
+  var arr = [];
+  var n = parseInt(prompt("请输入考试人数"));
+  for (var i = 0; i < n; i++) {
+    var a = parseInt(prompt("请输入整数"));
+    arr[i] = a;
+  }
+  var max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    } else {
+      max = max;
+    }
+  }
+  console.log(max);
+</script>
+<script id="ch0105/06" type="dcasd">
+  var arr = [];
+  var n = parseInt(prompt("请输入序列个数"));
+  for (var i = 0; i < n; i++) {
+    var a = parseInt(prompt("请输入整数"));
+    arr[i] = a;
+  }
+  var max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    } else {
+      max = max;
+    }
+  }
+  var min = 999999;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    } else {
+      min = min;
+    }
+  }
+  console.log(max - min);
+</script>
+<script id="ch0105/07">
+ 
+</script>
+<script id="ch0105/08" type="sds"></script>
+<script id="ch0105/09" type="sds"></script>
+<script id="ch0105/10" type="sds"></script>
