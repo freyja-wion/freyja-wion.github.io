@@ -579,19 +579,111 @@
   }
   console.log(parseInt(M))
 </script>
-<script id="ch0105/16">
+<script id="ch0105/16" type="cddc">
+  var N = +parseInt(prompt("请输入年薪"));
   var K = +parseInt(prompt("请输入增长速度"));
   var sum = 0;
-  for (let i = 0; i < 8; i++) {
+  var y =0;//年份
+  for (let i = 0; i < 20; i++) {
     sum += 200 * 0.01 * K;
   }
-  if (sum / 20 > 20) {
+  if (sum / N > 20) {
     console.log("Impossible");
   }else{
-    console.log(Math.ceil(sum/20))
+    console.log(Math.ceil(sum/N))
   }
 </script>
-<script id="ch0105/17" type="sds"></script>
-<script id="ch0105/18" type="sds"></script>
-<script id="ch0105/19" type="sds"></script>
-<script id="ch0105/20" type="sds"></script>
+<script id="ch0105/17" type="sfsf">
+  function fn(k) {
+    if (k == 0) {
+      return 0;
+    } else if (k == 1) {
+      return 1;
+    } else return fn(k - 1) + fn(k - 2);
+  }
+  console.log(fn(+parseInt(prompt("请输入正整数K"))));
+</script>
+<script id="ch0105/18" type="dsf">
+  var n = +parseInt(prompt("请输入病例数"));
+  var a = +parseInt(prompt("请输入总病例数"));
+  var b = +parseInt(prompt("请输入有效病例数"));
+  var x = b / a;
+  for (let i = 0; i < n - 1; i++) {
+    var c = +parseInt(prompt("请输入改进疗法总病例数"));
+    var d = +parseInt(prompt("请输入改进疗法有效病例数"));
+    var y = d / c;
+    if (y - x > 0.05) {
+      console.log("better");
+    } else if (x - y > 0.05) {
+      console.log("worse");
+    } else {
+      console.log("same");
+    }
+  }
+</script>
+<script id="ch0105/19" type="dasd">
+  var n = +parseInt(prompt("请输入屋顶数"));
+  var all = 0;
+  for (let i = 0; i < n; i++) {
+    var x = +parseInt(prompt("请输入横坐标"));
+    var y = +parseInt(prompt("请输入纵坐标"));
+    var a = +parseInt(prompt("请输入人数"));
+    var sum = Math.sqrt(x * x + y * y);
+    var time = Math.ceil((sum / 50)*2 + 1.5 * a);
+    all += time;
+  }
+  console.log(all);
+</script>
+<script id="ch0105/20" type="casc">
+  var n = +parseInt(prompt("请输入初始高度"));
+  var m = n;
+  var sum = 0;
+  for (let i = 0; i < 10; i++) {
+    sum += n / 2 + n;
+    n /= 2;
+  }
+  console.log(sum - m * Math.pow(0.5, 10));
+  console.log(m * Math.pow(0.5, 10));
+</script>
+<script id="ch0105/21" type="efe">
+  var n = +parseInt(prompt("请输入正整数N"));
+  var m = n;
+  if (n % 2 == 1) {
+    n = n * 3 + 1;
+    console.log(m + "*3+1=" + n);
+    while (n != 1) {
+      n /= 2;
+      console.log(2 * n + "/2=" + n);
+    }
+    console.log("End");
+  } else if (n % 2 == 0) {
+    while (n != 1) {
+      n /= 2;
+      console.log(2 * n + "/2=" + n);
+      if (n == 1) {
+        console.log("End");
+        break;
+      }
+      if (n % 2 == 1) {
+        n = n * 3 + 1;
+        console.log(m + "*3+1=" + n);
+        while (n != 1) {
+          n /= 2;
+          console.log(2 * n + "/2=" + n);
+        }
+        console.log("End");
+      }
+    }
+  }
+</script>
+<script id="ch0105/22" type="sds">
+  var n = +parseInt(prompt("请输入正整数N"));
+</script>
+<script id="ch0105/23" type="sds"></script>
+<script id="ch0105/24" type="sds"></script>
+<script id="ch0105/25" type="sds"></script>
+<script id="ch0105/26" type="sds"></script>
+<script id="ch0105/27" type="sds"></script>
+<script id="ch0105/28" type="sds"></script>
+<script id="ch0105/29" type="sds"></script>
+<script id="ch0105/30" type="sds"></script>
