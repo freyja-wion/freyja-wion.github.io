@@ -455,9 +455,143 @@
   }
   console.log(max - min);
 </script>
-<script id="ch0105/07">
- 
+<script id="ch0105/07" type="sfsdf">
+  var n = parseInt(prompt("请输入参加天数"));
+  var arr = [];
+  var gold = 0;
+  var silver = 0;
+  var bronze = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < 3; j++) {
+      var a = parseInt(prompt("请输入金银铜牌数"));
+      arr[j] = a;
+    }
+    // console.log(arr);
+    // console.log(arr[0]);
+    gold += arr[0];
+    silver += arr[1];
+    bronze += arr[2];
+  }
+  console.log(gold);
+  console.log(silver);
+  console.log(bronze);
+  console.log(gold + silver + bronze);
 </script>
-<script id="ch0105/08" type="sds"></script>
-<script id="ch0105/09" type="sds"></script>
-<script id="ch0105/10" type="sds"></script>
+<script id="ch0105/08" type="cvsdvs">
+  var n = parseInt(prompt("请输入n边形"));
+  var max = (n - 2) * 180;
+  for (let i = 0; i < n - 1; i++) {
+    var a = parseInt(prompt("请输入内角度数"));
+    max -= a;
+  }
+  console.log(max);
+</script>
+<script id="ch0105/09" type="fcvwes">
+  var a = +parseInt(prompt("请输入整数"));
+  var b = +parseInt(prompt("请输入整数"));
+  var sum = 0;
+  if (a % 2 == 0 && b % 2 == 0) {
+    for (let i = a + 1; i <= b; i += 2) {
+      sum += i;
+    }
+  } else if (a % 2 != 0 && b % 2 == 0) {
+    for (let i = a; i <= b; i += 2) {
+      sum += i;
+    }
+  } else if (a % 2 == 0 && b % 2 != 0) {
+    for (let i = a + 1; i <= b; i += 2) {
+      sum += i;
+    }
+  } else {
+    for (let i = a; i <= b; i += 2) {
+      sum += i;
+    }
+  }
+  console.log(sum);
+</script>
+<script id="ch0105/10" type="sd">
+  var m = +parseInt(prompt("请输入正整数m"));
+  var n = +parseInt(prompt("请输入正整数n"));
+  var sum = 0;
+  for (let i = m; i <= n; i++) {
+    if (i % 17 == 0) {
+      sum += i;
+    }
+  }
+  console.log(sum);
+</script>
+<script id="ch0105/11" type="dc">
+  var k = +parseInt(prompt("请输入正整数k"));
+  var a = 0;
+  var b = 0;
+  var c = 0;
+  for (let i = 0; i < k; i++) {
+    var n = +parseInt(prompt("请输入n个正整数"));
+    switch (n) {
+      case 1:
+        a++;
+        break;
+      case 5:
+        b++;
+        break;
+      case 10:
+        c++;
+        break;
+      default:
+        break;
+    }
+  }
+  console.log(a);
+  console.log(b);
+  console.log(c);
+</script>
+<script id="ch0105/12" type="df">
+  var N = parseInt(prompt("请输入N个整数"));
+  var a = +parseInt(prompt("请输入指定数字"));
+  var sum = 0;
+  for (let i = 0; i < N; i++) {
+    var b = +parseInt(prompt("请输入N个整数"));
+    if (b == a) {
+      sum++;
+    }
+  }
+  console.log(sum);
+</script>
+<script id="ch0105/13" type="sfasf">
+  var a = +parseInt(prompt("请输入整数"));
+  var n = parseInt(prompt("请输入乘方"));
+  console.log(Math.pow(a, n));
+</script>
+<script id="ch0105/14" type="dasd">
+  var x = +parseInt(prompt("请输入人口基数"));
+  var n = +parseInt(prompt("请输入年数"));
+  for (let i = 0; i < n; i++) {
+    x += x * 0.001;
+  }
+  console.log(x.toFixed(4))
+</script>
+<script id="ch0105/15" type="sdsd">
+  var R = +parseInt(prompt("请输入复合年利率"));
+  var M = +parseInt(prompt("请输入钱数"));
+  var Y = +parseInt(prompt("请输入年数"));
+  for (let i = 0; i < Y; i++) {
+    M += M * 0.01 * R;
+  }
+  console.log(parseInt(M))
+</script>
+<script id="ch0105/16">
+  var K = +parseInt(prompt("请输入增长速度"));
+  var sum = 0;
+  for (let i = 0; i < 8; i++) {
+    sum += 200 * 0.01 * K;
+  }
+  if (sum / 20 > 20) {
+    console.log("Impossible");
+  }else{
+    console.log(Math.ceil(sum/20))
+  }
+</script>
+<script id="ch0105/17" type="sds"></script>
+<script id="ch0105/18" type="sds"></script>
+<script id="ch0105/19" type="sds"></script>
+<script id="ch0105/20" type="sds"></script>
