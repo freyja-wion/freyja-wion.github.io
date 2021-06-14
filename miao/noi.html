@@ -745,7 +745,275 @@
   }
   console.log(sum);
 </script>
-<script id="ch0105/27" type="sds"></script>
-<script id="ch0105/28" type="sds"></script>
-<script id="ch0105/29" type="sds"></script>
-<script id="ch0105/30" type="sds"></script>
+<script id="ch0105/27" type="cs">
+  var k = +parseInt(prompt("请输入整数K"));
+  for (let i = 0; i < 9999; i++) {
+    if ((1 / 2) * i * (1 + 1 / i) > k) {
+      console.log(i)
+      break;
+    }
+  }
+</script>
+<script id="ch0105/28" type="sca">
+  var k = +parseInt(prompt("请输入整数K"));
+  var sum = 0;
+  var m = k;
+  while (k != 0) {
+    k = parseInt(k / 10);
+    sum++;
+  }
+  for (let i = 0; i < sum; i++) {
+    console.log(parseInt(m / Math.pow(10, i)) % 10);
+  }
+</script>
+<script id="ch0105/29" type="fsaf">
+  var k = parseInt(prompt("请输入整数K"));
+  var sum = 0;
+  var m = k;
+  var arr = [];
+  if (k > 0) {
+    while (k != 0) {
+      k = parseInt(k / 10);
+      sum++;
+    }
+    for (let i = 0; i < sum; i++) {
+      arr[i] = parseInt(m / Math.pow(10, i)) % 10;
+    }
+    if (m % 10 == 0) {
+      arr[0] = "";
+    }
+    console.log(arr.join(""));
+  } else if (k < 0) {
+    m = -k;
+    while (k != 0) {
+      k = parseInt(k / 10);
+      sum++;
+    }
+    for (let i = 0; i < sum; i++) {
+      arr[i] = parseInt(m / Math.pow(10, i)) % 10;
+    }
+    if (m % 10 == 0) {
+      arr[0] = "";
+    }
+    console.log("-" + arr.join(""));
+  }
+</script>
+<script id="ch0105/30" type="cs">
+  var m = parseInt(prompt("请输入整数m"));
+  var k = parseInt(prompt("请输入整数k"));
+  var sum = 1;
+  var n = m;
+  var sum1 = 0;
+  while (parseInt(m / 10) != 0) {
+    sum++;
+    m /= 10;
+  }
+  for (let i = 0; i < sum; i++) {
+    if (k == parseInt(n / Math.pow(10, i)) % 10) {
+      sum1++;
+    }
+  }
+  if (n % 19 == 0 && sum1 == k) {
+    console.log("YES");
+  } else {
+    console.log("NO");
+  }
+</script>
+<script id="ch0105/31" type="dsd">
+  var n = parseInt(prompt("请输入整数N"));
+  var m = parseInt(prompt("请输入整数M"));
+  var arr = [];
+  for (let i = 0; i < n; i++) {
+    arr[i] = true;
+  }
+  for (let j = 1; j < m; j++) {
+    if (i % j == 0) {
+      arr[i] = !arr[i];
+    }
+  }
+  console.log(arr);
+</script>
+<script id="ch0105/32" type="sds"></script>
+<script id="ch0105/33" type="dsad">
+  var n = parseInt(prompt("请输入整数N"));
+  var fenmu = 1;
+  var sum = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i % 2 == 0) {
+      sum -= 1 / fenmu;
+      fenmu++;
+    } else {
+      sum += 1 / fenmu;
+      fenmu++;
+    }
+  }
+  console.log(sum.toFixed(4));
+</script>
+<script id="ch0105/34" type="fdf">
+  var n = parseInt(prompt("请输入整数N"));
+  var sum = 1;
+  var total = 0;
+  for (let j = 1; j <= n; j++) {
+    for (let i = 1; i <= j; i++) {
+      sum *= i;
+    }
+    total += sum;
+    sum = 1;
+  }
+
+  console.log(total);
+</script>
+<script id="ch0105/35" type="fdsf">
+  var n = parseInt(prompt("请输入整数N"));
+  var sum = 1;
+  var total = 0;
+  for (let i = 1; i <= n; i++) {
+    sum *= i;
+    total += 1 / sum;
+  }
+  console.log((1 + total).toFixed(10));
+</script>
+<script id="ch0105/36" type="dawd">
+  var x = parseFloat(prompt("请输入浮点数x"));
+  var n = +parseInt(prompt("请输入整数N"));
+  var sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += Math.pow(x, n - i + 1);
+  }
+  console.log(sum + 1);
+</script>
+<script id="ch0105/37" type="fsdf">
+  var m = +parseInt(prompt("请输入最大体力"));
+  var n = +parseInt(prompt("请输入战斗力"));
+  var x = +parseInt(prompt("请输入能量元素"));
+  var t = 0;
+  while (x > 0) {
+    while (t < m) {
+      x--;
+      if (x >= 0) {
+        t += n;
+      } else {
+        break;
+      }
+      if (t >= m) {
+        n = n + parseInt(m / n);
+        t = 0;
+      }
+    }
+    console.log(n);
+  }
+</script>
+<script id="ch0105/38" type="sds">
+  var n = +parseInt(prompt("请输入最高n次幂"));
+</script>
+<script id="ch0105/39" type="fsdf">
+  var n = +parseInt(prompt("请输入正整数n"));
+  var sum = 1;
+  var sum1 = 0;
+  var a;
+  for (let i = 1; i <= n; i++) {
+    var m = i;
+    while (parseInt(i / 10) != 0) {
+      sum++;
+      i = parseInt(i / 10);
+    }
+    i = m;
+    for (let j = 0; j < sum; j++) {
+      //判断某位数字是否为7
+      if (parseInt(m / Math.pow(10, j)) % 10 != 7) {
+        a = true;
+      } else {
+        a = false;//某位数字为7跳出循环
+        break;
+      }
+    }
+    sum = 1;
+    if (m % 7 != 0 && a) {
+      sum1 += m * m;
+    }
+  }
+  console.log(sum1);
+</script>
+<script id="ch0105/40" type="fs">
+  var n = +parseInt(prompt("请输入正整数n"));
+  var sum = 1;
+  var sum1 = 0;
+  for (let i = 1; i <= n; i++) {
+    var m = i;
+    while (parseInt(i / 10) != 0) {
+      sum++;
+      i = parseInt(i / 10);
+    }
+    i = m;
+    for (let j = 0; j < sum; j++) {
+      //判断某位数字是否为1
+      if (parseInt(m / Math.pow(10, j)) % 10 == 1) {
+        sum1++;
+      }
+    }
+    sum = 1;
+  }
+  console.log(sum1);
+</script>
+<script id="ch0105/41" type="dsad">
+  var l = +parseInt(prompt("请输入正整数L"));
+  var r = +parseInt(prompt("请输入正整数R"));
+  var sum = 1;
+  var sum1 = 0;
+  for (let i = l; i <= r; i++) {
+    var m = i;
+    while (parseInt(i / 10) != 0) {
+      sum++;
+      i = parseInt(i / 10);
+    }
+    i = m;
+    for (let j = 0; j < sum; j++) {
+      //判断某位数字是否为2
+      if (parseInt(m / Math.pow(10, j)) % 10 == 2) {
+        sum1++;
+      }
+    }
+    sum = 1;
+  }
+  console.log(sum1)
+</script>
+<script id="ch0105/42" type="wwd">
+  var a = +parseInt(prompt("请输入矩形的高"));
+  var b = +parseInt(prompt("请输入矩形的宽"));
+  var c = prompt("请输入字符");
+  var x = prompt("请输入空心实心");
+  var str = "";
+  if (x == 1) {
+    for (let i = 1; i <= a; i++) {
+      for (let j = 1; j <= b; j++) {
+        str += c;
+      }
+      str += "\n";
+    }
+  } else if (x == 0) {
+    for (let i = 1; i <= a; i++) {
+      if (i == 1 || i == a) {
+        for (let j = 1; j <= b; j++) {
+          str += c;
+        }
+        str += "\n";
+      } else {
+        for (let i = 1; i <= b; i++) {
+          if (i == 1 || i == b) {
+            str += c;
+          } else {
+            str += " ";
+          }
+        }
+        str += "\n";
+      }
+    }
+  }
+  console.log(str);
+</script>
+<script id="ch0105/43">
+  var n = +parseInt(prompt("请输入正整数n"));
+  
+</script>
+<script id="ch0105/44" type="sds"></script>
+<script id="ch0105/45" type="sds"></script>
