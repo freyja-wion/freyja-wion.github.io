@@ -983,6 +983,7 @@
   for (let c = 0; c < k; c++) {
     var n = +parseInt(prompt());
     if (n == 0) {
+      var factor = Number(prompt());
       console.log("0");
     } else
       for (let i = n; i >= 0; i--) {
@@ -1123,7 +1124,7 @@
       count++;
     }
   }
-  console.log(arr[n+1]);
+  console.log(arr[n + 1]);
 </script>
 <script id="ch0105/45" type="dasd">
   var n = +parseInt(prompt("请输入正整数n"));
@@ -1139,3 +1140,156 @@
   }
   console.log(sum);
 </script>
+<script id="narcissistic" type="csc">
+  function narcissistic(n) {
+    var m = n;
+    var count = 0;
+    while (m != 0) {
+      if (m / 10 != 0) {
+        count++;
+      }
+      m = parseInt(m / 10);
+    }
+    var gewei = n % 10;
+    var shiwei = ((n - gewei) / 10) % 10;
+    var baiwei = ((n - gewei - 10 * shiwei) / 100) % 10;
+    var qianwei = ((n - gewei - 10 * shiwei - 100 * baiwei) / 1000) % 10;
+    if (
+      Math.pow(gewei, count) +
+        Math.pow(shiwei, count) +
+        Math.pow(baiwei, count) +
+        Math.pow(qianwei, count) ==
+      n
+    ) {
+      console.log(n);
+    } else {
+      continue;
+    }
+  }
+  }
+  narcissistic(Number(prompt()));
+</script>
+<script id="narcissistics" type="fsdf">
+  function narcissistics() {
+    for (let n = 0; n < 10000; n++) {
+      var m = n;
+      var count = 0;
+      while (m != 0) {
+        if (m / 10 != 0) {
+          count++;
+        }
+        m = parseInt(m / 10);
+      }
+      var gewei = n % 10;
+      var shiwei = ((n - gewei) / 10) % 10;
+      var baiwei = ((n - gewei - 10 * shiwei) / 100) % 10;
+      var qianwei = ((n - gewei - 10 * shiwei - 100 * baiwei) / 1000) % 10;
+      if (
+        Math.pow(gewei, count) +
+          Math.pow(shiwei, count) +
+          Math.pow(baiwei, count) +
+          Math.pow(qianwei, count) ==
+        n
+      ) {
+        console.log(n);
+      } else {
+        continue;
+      }
+    }
+  }
+  narcissistics();
+</script>
+<script id="palindrom" type="dasd">
+  function palindrom(n) {
+    var m = n;
+    var k = 0;
+    while (m != 0) {
+      k = k * 10 + (m % 10);
+      m = parseInt(m / 10);
+    }
+    if (k == n) {
+      console.log("YES");
+    } else {
+      console.log("No");
+    }
+  }
+  palindrom(Number(prompt()));
+</script>
+<script id="weekday" type="dasd">
+  function weekday(year, month) {}
+  palindrom(Number(prompt()), Number(prompt()));
+</script>
+<script id="complete-number" type="csac">
+  function completeNumber(n) {
+    var sum = 0;
+    for (let i = 1; i < n; i++) {
+      if (n % i == 0) {
+        sum += i;
+      }
+    }
+    if (sum == n) {
+      console.log("YES");
+    } else {
+      console.log("NO");
+    }
+  }
+  completeNumber(Number(prompt()));
+</script>
+<script id="complete-numbers" type="asd">
+  function completeNumbers() {
+    var sum = 0;
+    for (let i = 1; i < 1000; i++) {
+      for (let j = 1; j < i; j++) {
+        if (i % j == 0) {
+          sum += j;
+        }
+      }
+      if (sum == i) {
+        console.log(i);
+        sum = 0;
+      } else {
+        sum = 0;
+        continue;
+      }
+    }
+  }
+  completeNumbers();
+</script>
+<script id="prime" type="dasd">
+  function prime(n) {
+    for (let i = 2; i < n; i++) {
+      if (n % i == 0) {
+        console.log("No");
+        return;
+      } else {
+        continue;
+      }
+    }
+    console.log("YES");
+  }
+  prime(Number(prompt()));
+</script>
+<script id="primes">
+  function primes() {
+    for (let i = 2; i < 1000; i++) {
+      var isPrime = true;
+      for (let j = 2; j < i; j++) {
+        if (i % j == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        console.log(i);
+      }
+    }
+  }
+  primes();
+</script>
+<script id="lcf&lcm">
+  function lcflcm(a, b) {
+
+  }
+  prime(Number(prompt()), Number(prompt()));
+</script>
+<script id = "sqrt"></script>
