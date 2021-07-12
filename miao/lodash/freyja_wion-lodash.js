@@ -145,7 +145,7 @@ var freyja_wion = (function () {
   function fromPairs(pairs) {
     var map = {};
     for (let i = 0; i < pairs.length; i++) {
-      map["'" + pairs[i][0] + "'"] = pairs[i][1];
+      map[pairs[i][0]] = pairs[i][1];
     }
     return map;
   }
@@ -162,6 +162,96 @@ var freyja_wion = (function () {
     }
     return array;
   }
+  //创建一个新数组，将array与任何数组 或 值连接在一起。
+  function concat(array, ...values) {
+    var arr = [];
+    for (let i = 0; i < array.length; i++) {
+      arr.push(array[i]);
+    }
+    for (let j = 0; j < values.length; j++) {
+      if (Array.isArray(values[j])) {
+        for (let k = 0; k < values[j].length; k++) {
+          arr.push(values[j][k]);
+        }
+      } else {
+        arr.push(values[j]);
+      }
+    }
+    return arr;
+  }
+  //获取array中的最后一个元素。
+  function last(array) {
+    return array[array.length - 1];
+  }
+  //反转array，使得第一个元素变为最后一个元素，第二个元素变为倒数第二个元素，依次类推。
+  function reverse(array) {
+    var l = array.length;
+    for (let i = 0; i < l >> 1; i++) {
+      var temp;
+      temp = array[i];
+      array[i] = array[l - 1 - i];
+      array[l - 1 - i] = temp;
+    }
+    return array;
+  }
+  //创建一个按顺序排列的唯一值的数组。所有给定数组的元素值使用SameValueZero做等值比较。
+  //（注： arrays（数组）的并集，按顺序返回，返回数组的元素是唯一的）
+  function union(...arrays) {
+    var arr = [];
+    for (let i = 0; i < arrays.length; i++) {
+      for (let j = 0; j < arrays[i].length; j++) {
+        arr.push(arrays[i][j]);
+      }
+    }
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+          arr.splice(j, 1);
+          j--;
+        }
+      }
+    }
+    return arr;
+  }
+  //使用SameValueZero 等值比较，返回首次 value 在数组array中被找到的 索引值，
+  //如果 fromIndex 为负值，将从数组array尾端索引进行匹配。
+  function indexOf(array, value, fromIndex = 0) {
+    for (let i = fromIndex; i < array.length; i++) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+  }
+  //获取数组array中除了最后一个元素之外的所有元素（注：去除数组array中的最后一个元素）。
+  function initial(array) {
+    var arr = [];
+    for (let i = 0; i < array.length - 1; i++) {
+      arr.push(array[i]);
+    }
+    return arr;
+  }
+  //创建唯一值的数组，这个数组包含所有给定数组都包含的元素，
+  //使用SameValueZero进行相等性比较。（注：可以理解为给定数组的交集）
+  function intersection(...arrays) {
+    var map = {};
+    for (let i = 0; i < arrays.length; i++) {
+      for (let j = 0; j < arrays[i].length; j++) {
+        var a = arrays[i][j];
+        if (a in map) {
+          map[a]++;
+        } else {
+          map[a] = 1;
+        }
+      }
+    }
+    var arr = [];
+    for (key in map) {
+      if (map[key] == arrays.length) {
+        arr.push(Number(key));
+      }
+    }
+    return arr;
+  }
   return {
     chunk: chunk,
     compact: compact,
@@ -176,5 +266,12 @@ var freyja_wion = (function () {
     fromPairs: fromPairs,
     head: head,
     fill: fill,
+    concat: concat,
+    last: last,
+    reverse: reverse,
+    union: union,
+    indexOf: indexOf,
+    initial: initial,
+    intersection: intersection,
   };
 })();
