@@ -1140,32 +1140,85 @@
   }
   console.log(sum);
 </script>
-<script id="narcissistic" type="csc">
-  function narcissistic(n) {
-    var m = n;
+<script id="narcissistic" type="faswdf">
+  // function narcissistic(n) {
+  //   var m = n;
+  //   var count = 0;
+  //   while (m != 0) {
+  //     if (m / 10 != 0) {
+  //       count++;
+  //     }
+  //     m = parseInt(m / 10);
+  //   }
+  //   var gewei = n % 10;
+  //   var shiwei = ((n - gewei) / 10) % 10;
+  //   var baiwei = ((n - gewei - 10 * shiwei) / 100) % 10;
+  //   var qianwei = ((n - gewei - 10 * shiwei - 100 * baiwei) / 1000) % 10;
+  //   if (
+  //     Math.pow(gewei, count) +
+  //       Math.pow(shiwei, count) +
+  //       Math.pow(baiwei, count) +
+  //       Math.pow(qianwei, count) ==
+  //     n
+  //   ) {
+  //     console.log(n);
+  //   } else {
+  //     continue;
+  //   }
+  // }
+  function digitWidth(n) {
     var count = 0;
-    while (m != 0) {
-      if (m / 10 != 0) {
-        count++;
-      }
-      m = parseInt(m / 10);
-    }
-    var gewei = n % 10;
-    var shiwei = ((n - gewei) / 10) % 10;
-    var baiwei = ((n - gewei - 10 * shiwei) / 100) % 10;
-    var qianwei = ((n - gewei - 10 * shiwei - 100 * baiwei) / 1000) % 10;
-    if (
-      Math.pow(gewei, count) +
-        Math.pow(shiwei, count) +
-        Math.pow(baiwei, count) +
-        Math.pow(qianwei, count) ==
-      n
-    ) {
-      console.log(n);
-    } else {
-      continue;
-    }
+    do {
+      var digit = n % 10;
+      count++;
+      n = (n - digit) / 10;
+    } while (n);
+    return count;
   }
+
+  function power(a, x) {
+    var r = 1;
+    for (var i = 0; i < x; i++) {
+      r *= a;
+    }
+    return r;
+  }
+
+  function isNarcissistic(n) {
+    var m = n;
+    var width = 0;
+    do {
+      var digit = n % 10;
+      width++;
+      n = (n - digit) / 10;
+    } while (n);
+    var sum = 0;
+
+    while (n) {
+      var digit = n % 10;
+      var r = 1;
+      for (var i = 0; i < width; i++) {
+        r *= digit;
+      }
+      sum += r;
+      n = (n - digit) / 10;
+    }
+
+    return sum == m;
+  }
+
+  function isNarcissistic2(n) {
+    var m = n;
+    var width = digitWidth(n);
+    var sum = 0;
+
+    while (n) {
+      var digit = n % 10;
+      sum += power(digit, width);
+      n = (n - digit) / 10;
+    }
+
+    return sum == m;
   }
   narcissistic(Number(prompt()));
 </script>
@@ -1215,25 +1268,76 @@
   }
   palindrom(Number(prompt()));
 </script>
-<script id="weekday" type="dasd">
-  function weekday(year, month) {}
-  palindrom(Number(prompt()), Number(prompt()));
-</script>
-<script id="complete-number" type="csac">
-  function completeNumber(n) {
-    var sum = 0;
-    for (let i = 1; i < n; i++) {
-      if (n % i == 0) {
-        sum += i;
+<script id="weekday">
+  var day = 0;
+  function weekday(year, month) {
+    for (let y = 1; y < year; y++) {
+      if (isleapYear(y)) {
+        day += 366;
+      } else {
+        day += 365;
       }
     }
-    if (sum == n) {
-      console.log("YES");
-    } else {
-      console.log("NO");
+    for (let m = 1; m < month; m++) {
+      switch (m) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+          day += 31;
+          break;
+          jyhj;
+      }
     }
   }
-  completeNumber(Number(prompt()));
+  palindrom(Number(prompt()), Number(prompt()));
+</script>
+<script id="complete-number">
+  // function completeNumber(n) {
+  //   var sum = 0;
+  //   for (let i = 1; i < n; i++) {
+  //     if (n % i == 0) {
+  //       sum += i;
+  //     }
+  //   }
+  //   if (sum == n) {
+  //     console.log("YES");
+  //   } else {
+  //     console.log("NO");
+  //   }
+  // }
+  // completeNumber(Number(prompt()));
+  // function isCompleteNumber(n) {
+  //   var sum = 0;
+
+  //   for (var i = 1; i < n; i++) {
+  //     if (n % i == 0) {
+  //       sum += i;
+  //     }
+  //   }
+
+  //   return sum == n;
+  // }
+  // function isCompleteNumber(n) {
+  //   var sum = 1;
+  //   var sqrt_n = Math.sqrt(n);
+
+  //   for (var i = 2; i <= sqrt_n; i++) {
+  //     if (n % i == 0) {
+  //       var cp = n / i;
+  //       if (cp == i) {
+  //         sum += i;
+  //       } else {
+  //         sum += i + cp;
+  //       }
+  //     }
+  //   }
+
+  //   return sum == n;
+  // }
 </script>
 <script id="complete-numbers" type="asd">
   function completeNumbers() {
@@ -1269,7 +1373,7 @@
   }
   prime(Number(prompt()));
 </script>
-<script id="primes">
+<script id="primes" type="dasd">
   function primes() {
     for (let i = 2; i < 1000; i++) {
       var isPrime = true;
@@ -1287,9 +1391,38 @@
   primes();
 </script>
 <script id="lcf&lcm">
-  function lcflcm(a, b) {
-
+  function lcf(a, b) {
+    if (a > b) {
+      while (a % b) {
+        b = a % b;
+        a = b;
+      }
+      return b;
+    } else {
+      while (b % a) {
+        a = b % a;
+        b = a;
+      }
+      return a;
+    }
   }
-  prime(Number(prompt()), Number(prompt()));
+  function lcm(a, b) {
+    var min = lcf(a, b);
+    return (a * b) / min;
+  }
 </script>
-<script id = "sqrt"></script>
+<script id="sqrt">
+  function sqrt(x) {
+    var low = 0;
+    var high = x;
+    while (high - low > 0.000001) {
+      var mid = (low + high) / 2;
+      if (mid * mid > x) {
+        high = mid;
+      } else {
+        low = mid;
+      }
+    }
+    return (low + high) / 2;
+  }
+</script>
