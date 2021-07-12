@@ -16,4 +16,7 @@ var freyja_wion = function () {
     }
     return arr;
   }
-};
+  return {
+    chunk:chunk
+  }
+}();
