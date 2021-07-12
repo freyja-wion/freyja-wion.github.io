@@ -110,12 +110,55 @@ var freyja_wion = (function () {
     }
     return result;
   }
+  //创建一个切片数组，去除array前面的n个元素。（n默认值为1。）
   function drop(array, n) {
     if (n == undefined) {
       n = 1;
     }
     for (let i = 0; i < n; i++) {
       array.shift();
+    }
+    return array;
+  }
+  //创建一个切片数组，去除array尾部的n个元素。（n默认值为1。）
+  function dropRight(array, n) {
+    if (n == undefined) {
+      n = 1;
+    }
+    for (let i = 0; i < n; i++) {
+      array.pop();
+    }
+    return array;
+  }
+  //将 array 中的所有元素转换为由 separator 分隔的字符串。
+  function join(array, str) {
+    var str1 = String(array);
+    str1 = str1.replace(",", str);
+    for (let i = 0; i < str1.length; i++) {
+      if (str1[i] == ",") {
+        str1 = str1.replace(",", str);
+      }
+    }
+    return str1;
+  }
+  //与_.toPairs正好相反；这个方法返回一个由键值对pairs构成的对象。
+  function fromPairs(pairs) {
+    var map = {};
+    for (let i = 0; i < pairs.length; i++) {
+      map["'" + pairs[i][0] + "'"] = pairs[i][1];
+    }
+    return map;
+  }
+  //获取数组 array 的第一个元素。
+  function head(array) {
+    for (let i = 0; i < array.length; i++) {
+      return array[0];
+    }
+  }
+  //使用 value 值来填充（替换） array，从start位置开始, 到end位置结束（但不包含end位置）。
+  function fill(array, value, start = 0, end = array.length) {
+    for (let i = start; i < end; i++) {
+      array[i] = value;
     }
     return array;
   }
@@ -128,5 +171,10 @@ var freyja_wion = (function () {
     flattenDeep: flattenDeep,
     flattenDepth: flattenDepth,
     drop: drop,
+    dropRight: dropRight,
+    join: join,
+    fromPairs: fromPairs,
+    head: head,
+    fill: fill,
   };
 })();
