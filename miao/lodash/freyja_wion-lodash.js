@@ -286,6 +286,7 @@ var freyja_wion = (function () {
         return i;
       }
     }
+    return -1;
   }
   //计算 array 中值的总和
   function sum(array) {
@@ -308,16 +309,47 @@ var freyja_wion = (function () {
   }
   //调用 iteratee 遍历 collection(集合) 中的每个元素， iteratee 调用3个参数： (value, index | key, collection) 。
   //如果迭代函数（iteratee）显式的返回 false ，迭代会提前退出。
-  function foreach(array, predicate) {
+  function forEach(array, predicate) {
+    predicate = iteratee(predicate);
+    for (var i = 0; i < array.length; i++) {
+      if (predicate(array[i], i) === false) {
+        break;
+      }
+    }
+    return array;
+  }
+  //该方法类似_.find，区别是该方法返回第一个通过 predicate 判断为真值的元素的索引值（index），而不是元素本身。
+  function findIndex(array, predicate) {
     predicate = iteratee(predicate);
     for (let i = 0; i < array.length; i++) {
-      if (!predicate) {
-        return false
+      if (predicate(array[i])) {
+        return i;
       }
-      predicate(array[i]);
     }
+    return -1;
   }
-
+  //这个方式类似_.findIndex， 区别是它是从右到左的迭代集合array中的元素。
+  function findLastIndex(array, predicate, fromIndex = array.length - 1) {
+    predicate = iteratee(predicate);
+    for (let i = fromIndex; i >= 0; i--) {
+      if (predicate(array[i])) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  //这个方法类似_.pull，区别是这个方法接收一个要移除值的数组。
+  function pullAll(array, values) {
+    var idx = values[0];
+    var l = values.length - 1;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] == idx) {
+        array.splice(i, i + l);
+      }
+    }
+    return array;
+  }
+  // 传入什么属性名，它返回的函数就用来获取对象的什么属性名
   function property(prop) {
     // a.b
     return get.bind(null, window, prop);
@@ -325,11 +357,94 @@ var freyja_wion = (function () {
     //   return get(obj, prop)
     // }
   }
-  function matchesProperty(path, val) {
-    return function (obj) {
-      return isEqual(get(obj, path), val);
+
+  function bind(f, thisArg, ...fixedArgs) {
+    // bind(f, {}, 1, _, _, 3, _, 4)
+    return function (...args) {
+      // 5,8
+      var ary = fixedArgs.slice();
+      var j = 0;
+      for (var i = 0; i < ary.length; i++) {
+        if (Object.is(ary[i], bind.placeholder)) {
+          if (j < args.length) {
+            ary[i] = args[j++];
+          } else {
+            ary[i] = undefined;
+          }
+        }
+      }
+      while (j < args.length) {
+        ary.push(args[j++]);
+      }
+      return f.apply(thisArg, ary);
     };
   }
+  bind.placeholder = NaN;
+
+  // function f(a,b) {
+  //   return Math.max(10,a,b)
+  // }
+  // var f = Math.max.bind(null, 10)
+
+  function get(object, path, defaultVal = undefined) {
+    path = toPath(path);
+    // return path.reduce((obj, curPath) => {
+    //   return obj[curPath]
+    // }, object)
+
+    for (var i = 0; i < path.length; i++) {
+      if (object == undefined) {
+        return defaultVal;
+      } else {
+        object = object[path[i]];
+      }
+    }
+    return object;
+  }
+
+  function toPath(val) {
+    if (Array.isArray(val)) {
+      return val;
+    } else {
+      return val
+        .split("][")
+        .reduce((ary, it) => ary.concat(it.split("].")), [])
+        .reduce((ary, it) => ary.concat(it.split("[")), [])
+        .reduce((ary, it) => ary.concat(it.split(".")), []);
+    }
+  }
+
+  function get(object, path, defaultVal = undefined) {
+    if (object == undefined) {
+      return defaultVal;
+    } else if (path.length == 0) {
+      return object;
+    } else {
+      return get(object[path[0]], path.slice(1));
+    }
+  }
+
+  function isMatch(object, source) {
+    if (object == source) {
+      return true;
+    }
+    if (typeof object !== "object" || typeof source !== "object") {
+      return false;
+    }
+    for (var key in source) {
+      if (source[key] && typeof source[key] !== "object") {
+        if (object[key] !== source[key]) {
+          return false;
+        }
+      } else {
+        if (!isMatch(object[key], source[key])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   function matches(src) {
     // return bind(isMatch, null, window, src)
     return function (obj) {
@@ -337,6 +452,11 @@ var freyja_wion = (function () {
     };
   }
 
+  function matchesProperty(path, val) {
+    return function (obj) {
+      return isEqual(get(obj, path), val);
+    };
+  }
   function iteratee(predicate) {
     if (typeof predicate == "function") {
       return predicate;
@@ -377,5 +497,9 @@ var freyja_wion = (function () {
     lastIndexOf: lastIndexOf,
     sum: sum,
     sumBy: sumBy,
+    forEach: forEach,
+    findIndex: findIndex,
+    findLastIndex: findLastIndex,
+    pullAll: pullAll,
   };
 })();
