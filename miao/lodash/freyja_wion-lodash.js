@@ -252,6 +252,105 @@ var freyja_wion = (function () {
     }
     return arr;
   }
+  //移除数组array中所有和给定值相等的元素，使用SameValueZero 进行全等比较。
+  function pull(array, ...values) {
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < values.length; j++) {
+        if (values[j] == array[i]) {
+          array.splice(i, 1);
+          i--;
+          break;
+        }
+      }
+    }
+    return array;
+  }
+  //获取array数组的第n个元素。如果n为负数，则返回从数组结尾开始的第n个元素。
+  function nth(array, n) {
+    for (let i = 0; i < array.length; i++) {
+      if (n >= 0) {
+        if (i == n) {
+          return array[i];
+        }
+      } else {
+        if (i == -n) {
+          return array[i];
+        }
+      }
+    }
+  }
+  //这个方法类似_.indexOf ，区别是它是从右到左遍历array的元素。
+  function lastIndexOf(array, value, fromIndex = array.length - 1) {
+    for (let i = fromIndex; i >= 0; i--) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+  }
+  //计算 array 中值的总和
+  function sum(array) {
+    var total = 0;
+    for (let i = 0; i < array.length; i++) {
+      total += array[i];
+    }
+    return total;
+  }
+  //这个方法类似_.summin 除了它接受 iteratee
+  //来调用 array中的每一个元素，来生成其值排序的标准。
+  //iteratee 会调用1个参数: (value) 。
+  function sumBy(array, predicate) {
+    predicate = iteratee(predicate);
+    var total = 0;
+    for (let i = 0; i < array.length; i++) {
+      total += predicate(array[i]);
+    }
+    return total;
+  }
+  //调用 iteratee 遍历 collection(集合) 中的每个元素， iteratee 调用3个参数： (value, index | key, collection) 。
+  //如果迭代函数（iteratee）显式的返回 false ，迭代会提前退出。
+  function foreach(array, predicate) {
+    predicate = iteratee(predicate);
+    for (let i = 0; i < array.length; i++) {
+      if (!predicate) {
+        return false
+      }
+      predicate(array[i]);
+    }
+  }
+
+  function property(prop) {
+    // a.b
+    return get.bind(null, window, prop);
+    // return function(obj) {
+    //   return get(obj, prop)
+    // }
+  }
+  function matchesProperty(path, val) {
+    return function (obj) {
+      return isEqual(get(obj, path), val);
+    };
+  }
+  function matches(src) {
+    // return bind(isMatch, null, window, src)
+    return function (obj) {
+      return isMatch(obj, src);
+    };
+  }
+
+  function iteratee(predicate) {
+    if (typeof predicate == "function") {
+      return predicate;
+    }
+    if (typeof predicate == "string") {
+      return property(predicate);
+    }
+    if (Array.isArray(predicate)) {
+      return matchesProperty(...predicate);
+    }
+    if (typeof predicate == "object") {
+      return matches(predicate);
+    }
+  }
   return {
     chunk: chunk,
     compact: compact,
@@ -273,5 +372,10 @@ var freyja_wion = (function () {
     indexOf: indexOf,
     initial: initial,
     intersection: intersection,
+    pull: pull,
+    nth: nth,
+    lastIndexOf: lastIndexOf,
+    sum: sum,
+    sumBy: sumBy,
   };
 })();
