@@ -341,13 +341,71 @@ var freyja_wion = (function () {
   //这个方法类似_.pull，区别是这个方法接收一个要移除值的数组。
   function pullAll(array, values) {
     var idx = values[0];
-    var l = values.length - 1;
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] == idx) {
-        array.splice(i, i + l);
+    var l = values.length;
+    for (let j = 0; j < l; j++) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] == values[j]) {
+          array.splice(i, 1);
+          i--;
+        }
       }
     }
     return array;
+  }
+  //转化value为属性路径的数组
+  function toPath(val) {
+    if (Array.isArray(val)) {
+      return val;
+    } else {
+      return val
+        .split("][")
+        .reduce((ary, it) => ary.concat(it.split("].")), [])
+        .reduce((ary, it) => ary.concat(it.split("[")), [])
+        .reduce((ary, it) => ary.concat(it.split(".")), []);
+    }
+  }
+  //这个方法类似于_.pullAll ，区别是这个方法接受一个 iteratee（迭代函数） 调用 array 和 values的每个值以产生一个值，
+  //通过产生的值进行了比较。iteratee 会传入一个参数： (value) 。
+  function pullBy(array, values, predicate) {
+    for (let i = 0; i < array.length; i++) {
+      if (values.map((item) => item[predicate]).includes(array[i][predicate])) {
+        array.splice(i, 1);
+        i--;
+      }
+    }
+    return array;
+  }
+  //这个方法类似于_.pullAll，区别是这个方法接受 comparator 调
+  //用array中的元素和values比较。comparator 会传入两个参数：(arrVal, othVal) 。
+  function pullAllWith(array, values, comparator) {
+    for (let i = 0; i < values.length; i++) {
+      for (let j = 0; j < array.length; j++) {
+        if (comparator(values[i], array[j]) == true) {
+          array.splice(j, 1);
+          j--;
+        }
+      }
+    }
+    return array;
+  }
+  //使用二进制的方式检索来决定 value值 应该插入到数组中
+  //尽可能小的索引位置，以保证array的排序。
+  function sortedIndex(array, value) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] >= value) {
+        return i;
+      }
+    }
+  }
+  //这个方法类似_.sortedIndex ，除了它接受一个 iteratee （迭代函数），调用每一个数组（array）元素
+  //，返回结果和value 值比较来计算排序。iteratee 会传入一个参数：(value) 。
+  function sortedIndexBy(array, value, predicate) {
+    predicate = iteratee(predicate);
+    for (let i = 0; i < array.length; i++) {
+      if (predicate(array[i]) >= predicate(value)) {
+        return i;
+      }
+    }
   }
   // 传入什么属性名，它返回的函数就用来获取对象的什么属性名
   function property(prop) {
@@ -357,7 +415,29 @@ var freyja_wion = (function () {
     //   return get(obj, prop)
     // }
   }
-
+  function isObject(obj) {
+    return typeof obj === "object" && obj != null;
+  }
+  function isEqual(obj1, obj2) {
+    if (!isObject(obj1) || !isObject(obj2)) {
+      return obj1 === obj2;
+    }
+    if (obj1 === obj2) {
+      return true;
+    }
+    var obj1Keys = Object.keys(obj1);
+    var obj2Keys = Object.keys(obj2);
+    if (obj1Keys.length !== obj2Keys.length) {
+      return false;
+    }
+    for (var key in obj1) {
+      var res = isEqual(obj1[key], obj2[key]);
+      if (!res) {
+        return false;
+      }
+    }
+    return true;
+  }
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
     return function (...args) {
@@ -401,19 +481,6 @@ var freyja_wion = (function () {
     }
     return object;
   }
-
-  function toPath(val) {
-    if (Array.isArray(val)) {
-      return val;
-    } else {
-      return val
-        .split("][")
-        .reduce((ary, it) => ary.concat(it.split("].")), [])
-        .reduce((ary, it) => ary.concat(it.split("[")), [])
-        .reduce((ary, it) => ary.concat(it.split(".")), []);
-    }
-  }
-
   function get(object, path, defaultVal = undefined) {
     if (object == undefined) {
       return defaultVal;
@@ -501,5 +568,10 @@ var freyja_wion = (function () {
     findIndex: findIndex,
     findLastIndex: findLastIndex,
     pullAll: pullAll,
+    toPath: toPath,
+    pullBy: pullBy,
+    pullAllWith: pullAllWith,
+    sortedIndex: sortedIndex,
+    sortedIndexBy: sortedIndexBy,
   };
 })();

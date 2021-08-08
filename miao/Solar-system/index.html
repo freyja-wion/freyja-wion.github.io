@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <body
+    style="
+      background-color: rgb(1, 1, 17);
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    "
+  >
+    <p
+      id="sun"
+      style="
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -40px;
+        margin-top: -40px;
+      "
+    >
+      <img src="./png/Sun.png" alt="" style="width: 100%" />
+    </p>
+    <p
+      id="earth"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Earth.png"
+        alt=""
+        id="earthImg"
+        style="width: 20px; height: 20px; position: relative"
+      />
+      <p id="moon" 
+         style=" 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -5px;
+        margin-top: -5px;
+        z-index: 99;"
+        >
+        <img src="./png/Moon.png"  alt="" style="width: 10px;height: 10px; position: absolute;">
+      </p>
+    </p>
+    <p
+      id="mercury"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -7px;
+        margin-top: -7px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Mercury.png"
+        alt=""
+        id="mercuryImg"
+        style="width: 15px; height: 15px; position: absolute"
+      />
+    </p>
+    <p
+      id="venus"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Venus.png"
+        alt=""
+        id="venusImg"
+        style="width: 20px; height: 20px; position: absolute"
+      />
+    </p>
+    <p
+      id="mars"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -7px;
+        margin-top: -7px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Mars.png"
+        alt=""
+        id="marsImg"
+        style="width: 15px; height: 15px; position: absolute"
+      />
+    </p>
+    <p
+      id="jupiter"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -20px;
+        margin-top: -20px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Jupiter.png"
+        alt=""
+        id="jupiterImg"
+        style="width: 40px; height: 40px; position: absolute"
+      />
+    </p>
+    <p
+      id="saturn"
+      style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -20px;
+        margin-top: -20px;
+        z-index: 99;
+      "
+    >
+      <img
+        src="./png/Saturn.png"
+        alt=""
+        id="saturnImg"
+        style="width: 40px; height: 40px; position: absolute"
+      />
+    </p>
+    <div
+      class="mercuryPath"
+      style="
+        width: 140px;
+        height: 140px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -70px;
+        margin-left: -70px;
+      "
+    ></div>
+    <div
+      class="vinusPath"
+      style="
+        width: 220px;
+        height: 220px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -110px;
+        margin-left: -110px;
+      "
+    ></div>
+    <div
+      class="earthPath"
+      style="
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -150px;
+      "
+    ></div>
+    <div
+      class="marsPath"
+      style="
+        width: 360px;
+        height: 360px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -180px;
+        margin-left: -180px;
+      "
+    ></div>
+    <div
+      class="jupiterPath"
+      style="
+        width: 560px;
+        height: 560px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -280px;
+        margin-left: -280px;
+      "
+    ></div>
+    <div
+      class="saturnPath"
+      style="
+        width: 760px;
+        height: 760px;
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -380px;
+        margin-left: -380px;
+      "
+    ></div>
+    <script>
+      function move(id, name, speed, radius) {
+        name = document.getElementById(id);
+        var angle = 0,
+          lastTime = null;
+        function animate(time) {
+          if (lastTime != null) {
+            angle += (time - lastTime) * speed;
+          }
+          lastTime = time;
+          name.style.top = Math.sin(angle) * radius + "px";
+          name.style.left = Math.cos(angle) * radius + "px";
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      }
+      move("mercuryImg", mercury, 0.001, 70);
+      move("venusImg", venus, 0.0007, 110);
+      move("earthImg", earth, 0.0005, 150);
+      move("moonImg", moon, 0.0005, 150);
+      move("marsImg", mars, 0.0003, 180);
+      move("jupiterImg", jupiter, 0.0002, 280);
+      move("saturnImg",saturn,0.00015,380)
+    </script>
+  </body>
+</html>
