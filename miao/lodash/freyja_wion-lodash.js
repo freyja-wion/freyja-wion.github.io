@@ -366,7 +366,7 @@ var freyja_wion = (function () {
   }
   //这个方法类似于_.pullAll ，区别是这个方法接受一个 iteratee（迭代函数） 调用 array 和 values的每个值以产生一个值，
   //通过产生的值进行了比较。iteratee 会传入一个参数： (value) 。
-  function pullBy(array, values, predicate) {
+  function pullAllBy(array, values, predicate) {
     for (let i = 0; i < array.length; i++) {
       if (values.map((item) => item[predicate]).includes(array[i][predicate])) {
         array.splice(i, 1);
@@ -403,6 +403,33 @@ var freyja_wion = (function () {
     predicate = iteratee(predicate);
     for (let i = 0; i < array.length; i++) {
       if (predicate(array[i]) >= predicate(value)) {
+        return i;
+      }
+    }
+  }
+  //这个方法类似_.indexOf，除了它是在已经排序的数组array上执行二进制检索。
+  function sortedIndexOf(array, value) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+    return -1
+  }
+  //此方法类似于_.sortedIndex，除了 它返回 value值 在 array 中尽可能大的索引位置（index）。
+  function sortedLastIndex(array, value) {
+    for (let i = array.length-1; i >0; i--) {
+      if (array[i] <= value) {
+        return i;
+      }
+    }
+  }
+  //这个方法类似_.sortedLastIndex ，除了它接受一个 iteratee （迭代函数），调用每一个数组（array）
+  //元素，返回结果和value 值比较来计算排序。iteratee 会传入一个参数：(value) 。
+  function sortedIndexBy(array, value, predicate) {
+    predicate = iteratee(predicate);
+    for (let i = array.length; i >=0; i--) {
+      if (predicate(array[i]) <= predicate(value)) {
         return i;
       }
     }
@@ -569,9 +596,11 @@ var freyja_wion = (function () {
     findLastIndex: findLastIndex,
     pullAll: pullAll,
     toPath: toPath,
-    pullBy: pullBy,
+    pullAllBy: pullAllBy,
     pullAllWith: pullAllWith,
     sortedIndex: sortedIndex,
     sortedIndexBy: sortedIndexBy,
+    sortedIndexOf: sortedIndexOf,
+    sortedLastIndex:sortedLastIndex,
   };
 })();
