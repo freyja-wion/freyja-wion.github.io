@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .orga {
+      width: 320px;
+      height: 180px;
+      position: absolute;
+    }
+  </style>
+  <body>
+    <div>
+      <img
+        class="orga"
+        src="./emoji/20200901113520_16681.gif"
+        alt=""
+        style="top: 100px; left: 50px"
+      />
+    </div>
+    <script>
+      var orga = document.querySelector(".orga");
+      var vx = 0;
+      var vy = 0;
+      var upPress = false;
+      var downPress = false;
+      var leftPress = false;
+      var rightPress = false;
+      document.addEventListener("keydown", function (e) {
+        if (e.key == "ArrowRight") {
+          rightPress = true;
+          vx = 5;
+        }
+        if (e.key == "ArrowLeft") {
+          leftPress = true;
+          vx = -5;
+        }
+        if (e.key == "ArrowUp") {
+          upPress = true;
+          vy = -5;
+        }
+        if (e.key == "ArrowDown") {
+          downPress = true;
+          vy = 5;
+        }
+      });
+      document.addEventListener("keyup", function (e) {
+        if (e.key == "ArrowRight") {
+          rightPress = false;
+          if (leftPress) {
+            vx = -5;
+          } else {
+            vx = 0;
+          }
+        }
+        if (e.key == "ArrowLeft") {
+          leftPress = false;
+          if (rightPress) {
+            vx = 5;
+          } else {
+            vx = 0;
+          }
+        }
+        if ((e.key = "ArrowUp")) {
+          upPress = false;
+          if (downPress) {
+            vy = 5;
+          } else {
+            vy = 0;
+          }
+        }
+        if (e.key == "ArrowDown") {
+          downPress = false;
+          if (upPress) {
+            vy = -5;
+          } else {
+            vy = 0;
+          }
+        }
+      });
+      requestAnimationFrame(function move() {
+        orga.style.left = parseInt(orga.style.left) + vx + "px";
+        orga.style.top = parseInt(orga.style.top) + vy + "px";
+        requestAnimationFrame(move);
+      });
+    </script>
+  </body>
+</html>
