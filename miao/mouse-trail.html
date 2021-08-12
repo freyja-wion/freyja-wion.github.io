@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("mousedown", function (event) {
+        function draw(event) {
+          var dot = document.createElement("div");
+          dot.className = "dot";
+          dot.style.left = event.pageX - 5 + "px";
+          dot.style.top = event.pageY - 5 + "px";
+          document.body.appendChild(dot);
+          var trail = setTimeout(function () {
+            document.body.removeChild(dot);
+          }, 150);
+        }
+        document.addEventListener("mousemove", draw);
+        document.addEventListener("mouseup", function once() {
+          document.removeEventListener("mousemove", draw);
+          document.removeEventListener("mouseup", once);
+        });
+      });
+    </script>
+  </body>
+</html>
