@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        cursor: move;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" style="top: 100px; left: 100px; z-index:1">
+      <img src="./emoji/wzry.jpg" alt="" id="wzry" />
+    </div>
+    <div id="box2" style="top: 200px; left: 200px; z-index:1">
+      <img src="./emoji/ys.jpg" alt="" id="ys" />
+    </div>
+    <div id="box3" style="top: 300px; left: 300px; z-index:1">
+      <img src="./emoji/mrfz.jpg" alt="" id="mrfz" />
+    </div>
+    <script>
+      // Array.from(document.querySelectorAll(".box")).forEach((e) => {
+      //   e.addEventListener("mousedown", function (event) {
+      //     var lastX = event.clientX - e.offsetLeft;
+      //     var lastY = event.clientY - e.offsetTop;
+      //     event.preventDefault();
+      //     function drag(event) {
+      //       e.style.top = event.clientY - lastY + "px";
+      //       e.style.left = event.clientX - lastX + "px";
+      //       event.preventDefault();
+      //     }
+      //     e.addEventListener("mousemove", drag);
+      //     e.addEventListener("mouseup", function () {
+      //       e.removeEventListener("mousemove", drag);
+      //     });
+      //   });
+      // });
+      var box1 = document.querySelector("#box1");
+      var box2 = document.querySelector("#box2");
+      var box3 = document.querySelector("#box3");
+      var maxZIndex = 5
+      box1.addEventListener("mousedown", function (event) {
+        var lastX = event.clientX - box1.offsetLeft;
+        var lastY = event.clientY - box1.offsetTop;
+        event.preventDefault();
+        box1.style.zIndex = maxZIndex++;
+        function drag(event) {
+          box1.style.top = event.clientY - lastY + "px";
+          box1.style.left = event.clientX - lastX + "px";
+          event.preventDefault();
+        }
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", function () {
+          document.removeEventListener("mousemove", drag);
+        });
+      });
+      box2.addEventListener("mousedown", function (event) {
+        var lastX = event.clientX - box2.offsetLeft;
+        var lastY = event.clientY - box2.offsetTop;
+        event.preventDefault();
+        box2.style.zIndex = maxZIndex++;
+        function drag(event) {
+          box2.style.top = event.clientY - lastY + "px";
+          box2.style.left = event.clientX - lastX + "px";
+          event.preventDefault();
+        }
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", function () {
+          document.removeEventListener("mousemove", drag);
+        });
+      });
+      box3.addEventListener("mousedown", function (event) {
+        var lastX = event.clientX - box3.offsetLeft;
+        var lastY = event.clientY - box3.offsetTop;
+        event.preventDefault();
+        box3.style.zIndex = maxZIndex++;
+        function drag(event) {
+          box3.style.top = event.clientY - lastY + "px";
+          box3.style.left = event.clientX - lastX + "px";
+          event.preventDefault();
+        }
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", function () {
+          document.removeEventListener("mousemove", drag);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      svg {
+        border: 5px rgb(255, 0, 0) solid;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="500" height="500"></svg>
+    <input type="color" id="color" />
+    <input type="range" min="1" max="5" id="range" />
+    <script>
+      var lastPos = null;
+      var svg = document.querySelector("svg");
+      //按下鼠标时绑定事件
+      document.addEventListener("mousedown", function (event) {
+        function drawDot(event) {
+          //鼠标相对于svg的位置
+          var pos = mousePos(svg);
+          //document.createElement方法用来生成元素节点，并返回该节点。
+          //在svg中创建line元素,不能用createElement
+          var line = document.createElementNS(
+            //http http http http http 没有s
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
+          //设置svg中线的属性
+          if (lastPos == null) {
+            line.setAttribute("x1", pos.x);
+            line.setAttribute("y1", pos.y);
+            line.setAttribute("x2", pos.x);
+            line.setAttribute("y2", pos.y);
+          } else {
+            line.setAttribute("x1", pos.x);
+            line.setAttribute("y1", pos.y);
+            line.setAttribute("x2", lastPos.x);
+            line.setAttribute("y2", lastPos.y);
+          }
+          line.setAttribute("stroke", color.value);
+          line.setAttribute("stroke-width", range.value);
+          //设置圆角
+          line.setAttribute("stroke-linecap","round")
+          lastPos = pos;
+          svg.appendChild(line);
+        }
+        document.addEventListener("mousemove", drawDot);
+        //mouseup时把自己解绑掉，还把mousemove解绑掉
+        //once函数为了把自己解绑
+        document.addEventListener("mouseup", function once() {
+          lastPos = null;
+          document.removeEventListener("mouseup", once);
+          document.removeEventListener("mousemove", drawDot);
+        });
+      });
+      //鼠标相对于这个元素的位置
+      function mousePos(node) {
+        //Element.getBoundingClientRect方法返回一个对象，提供当前元素节点的大小、位置等信息，
+        var box = node.getBoundingClientRect();
+        return {
+          // clientX 鼠标相对于浏览器左上角x轴的坐标
+          x: window.event.clientX - box.x,
+          y: window.event.clientY - box.y,
+        };
+      }
+    </script>
+  </body>
+</html>
