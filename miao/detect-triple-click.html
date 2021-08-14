@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var c = 0;
+      var last = 0;
+      document.addEventListener("click", function (event) {
+        var time = Date.now();
+        if (time - last > 200) {
+          c++;
+        }
+        setTimeout(() => {
+          c = 0;
+        }, 500);
+        if (c == 2) {
+          var click = document.createElement("div");
+          click.innerText = "double click";
+          document.body.appendChild(click);
+        }
+        if (c == 3) {
+          var click = document.createElement("div");
+          click.innerText = "triple click";
+          document.body.appendChild(click);
+        }
+      });
+    </script>
+  </body>
+</html>
