@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 700px;
+        height: 250px;
+        border: 1px rgba(180, 180, 180, 0.438) solid;
+        border-radius: 5px;
+        position: relative;
+        top: 20px;
+        left: 20px;
+        padding: 25px;
+        box-sizing: border-box;
+      }
+      ul>li{
+        font-size: 18px;
+        line-height: 28px;
+      }
+      button {
+        background-color: white;
+        border:none;
+        width: 80px;
+        height: 40px;
+        color: #0D6EFD;
+        font-size: 18px;
+        border-radius:5px
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <ul class="nav">
+          <li id="Home" style="list-style-type: none">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit
+            necessitatibus inventore nobis unde, aut autem? Saepe, cumque
+            facere! Odit corrupti cum vitae eligendi iusto, ad consectetur
+            mollitia numquam pariatur fugiat!
+          </li>
+          <li id="Profile" style="list-style-type: none">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+            sunt dolorem quas beatae iste, a cumque libero hic, vero dolorum
+            debitis magnam est tempore qui totam, voluptates eveniet. Iusto,
+            corporis!
+          </li>
+          <li id="Contact" style="list-style-type: none">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+            voluptate inventore fugiat perspiciatis, illum cum iure omnis quasi
+            error magnam maiores, deserunt aspernatur excepturi aperiam beatae
+            officiis placeat dolorum blanditiis!
+          </li>
+        </ul>
+    </div>
+    <script>
+      function asTabs(node) {
+        let children = Array.from(node.children);
+        var buttons = []
+        for (let item of children.reverse()) {
+          let button = document.createElement("button");
+          buttons.push(button)
+          item.style.display = "none";
+          children[2].style.display = "block"
+          button.textContent = item.id;
+          button.addEventListener("click", function (event) {
+            children.forEach((it) => (it.style.display = "none"));
+            buttons.forEach((it) => (it.style.color = "#0D6EFd"));
+            buttons.forEach(it =>it.style.backgroundColor = "white")
+            item.style.display = "block";
+            button.style.backgroundColor = "#0D6EFD"
+            button.style.color = "white"
+            button.style.transition = "background-color 0.1s linear"
+          });
+          node.prepend(button);
+        }
+      }
+      asTabs(document.querySelector("ul"));
+    </script>
+  </body>
+</html>

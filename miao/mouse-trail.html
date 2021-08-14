@@ -5,33 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      .dot {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        position: absolute;
-        background-color: crimson;
-      }
-    </style>
   </head>
+  <style>
+    div {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      border-radius: 50%;
+      display: none;
+    }
+    #node1 {
+      background-color: tomato;
+    }
+    #node2 {
+      background-color: rgb(252, 214, 0);
+    }
+    #node3 {
+      background-color: aqua;
+    }
+    #node4 {
+      background-color: green;
+    }
+  </style>
   <body>
+    <div id="node1"></div>
+    <div id="node2"></div>
+    <div id="node3"></div>
+    <div id="node4"></div>
     <script>
-      document.addEventListener("mousedown", function (event) {
-        function draw(event) {
-          var dot = document.createElement("div");
-          dot.className = "dot";
-          dot.style.left = event.pageX - 5 + "px";
-          dot.style.top = event.pageY - 5 + "px";
-          document.body.appendChild(dot);
-          var trail = setTimeout(function () {
-            document.body.removeChild(dot);
-          }, 150);
-        }
-        document.addEventListener("mousemove", draw);
-        document.addEventListener("mouseup", function once() {
-          document.removeEventListener("mousemove", draw);
-          document.removeEventListener("mouseup", once);
+      var nodes = document.querySelectorAll("div");
+      document.addEventListener("mousemove", function (event) {
+        var ex = event.clientX;
+        var ey = event.clientY;
+        requestAnimationFrame(function f(time) {
+          var angle = time * 0.05;
+          for (let item of nodes) {
+            item.style.display = "block";
+            item.style.top = Math.sin(angle) * 70 + ey + "px";
+            item.style.left = Math.cos(angle) * 70 + ex + "px";
+            angle += Math.PI / 2;
+          }
+          requestAnimationFrame(f);
         });
       });
     </script>
