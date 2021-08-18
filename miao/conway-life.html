@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="table">
+      <tr>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+        <td><input type="checkbox" name="" id=""></td>
+      </tr>
+    </table>
+    <script>
+      var tr = document.getElementsByTagName('tr')
+      console.log(tr[0].children)
+      for (let i = 0; i < tr.length; i++) {
+        for (let j = 0; j < tr[i].children.length; j++) {
+          var td = document.querySelectorAll('td')
+          console.log(td)
+          var x = Math.random()
+          var rand = Math.random(x)
+         td.children.setAttribute('checked',rand)
+        }
+        
+      }
+      // for (let i = 0; i < 20; i++) {
+      //   for (let j = 0; j < 20; j++) {
+      //     var checked = document.createElement("input");
+      //     var br = document.createElement("br")
+      //     checked.setAttribute("type", "checkbox");
+      //     var body = document.querySelector("body");
+      //     body.append(checked);
+      //   }
+      //   body.append(br)
+      // }
+      // var sum = 0
+      // for (let i = 0; i < 20; i++) {
+      //   for (let j = 0; j < 20; j++) {
+      //     var x = Math.random()
+      //     var rand = Math.round(x)
+      //     checked.setAttribute('checked',rand)    
+      //   }
+
+      // }
+    </script>
+  </body>
+</html>

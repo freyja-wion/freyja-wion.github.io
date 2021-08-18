@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <ul></ul>
+    <script>
+      var suggestion = [];
+      var input = document.querySelector("input");
+      var ul = document.querySelector("ul");
+      for (var name in window) {
+        suggestion.push(name);
+      }
+      //console.log(suggestion);
+      input.addEventListener("input", function () {
+        //匹配首字母
+        var match = suggestion.filter((item) => item.indexOf(input.value) == 0);
+        //console.log(match);
+        ul.innerHTML = "";
+        match.slice(0, 20).forEach((item) => {
+          var li = document.createElement("li");
+          li.innerText = item;
+          li.addEventListener("click", function () {
+            input.value = item;
+            ul.innerHTML = "";
+          });
+          ul.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

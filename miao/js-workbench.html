@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      pre {
+        width: 250px;
+        height: 150px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea name="" id="text" cols="30" rows="10">return n + 1</textarea><br />
+    <button id="btn">点击封装</button>
+    <pre id="pre"></pre>
+    <script>
+      document.querySelector("#btn").addEventListener("click", function () {
+        var text = document.querySelector("#text");
+        var code = text.innerHTML;
+        var pre = document.querySelector("#pre");
+        try {
+          var f = new Function(code);
+          pre.innerHTML = f;
+        } catch (e) {
+          pre.innerHTML = e;
+        }
+      });
+    </script>
+  </body>
+</html>
