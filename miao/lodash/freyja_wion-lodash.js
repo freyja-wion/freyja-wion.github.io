@@ -371,13 +371,13 @@ var freyja_wion = (function () {
   function sortedLastIndex(array, value) {
     for (let i = array.length - 1; i > 0; i--) {
       if (array[i] <= value) {
-        return i;
+        return i + 1;
       }
     }
   }
   function sortedIndexBy(array, value, predicate) {
     predicate = iteratee(predicate);
-    for (let i = array.length; i >= 0; i--) {
+    for (let i = array.length - 1; i >= 0; i--) {
       if (predicate(array[i]) <= predicate(value)) {
         return i;
       }
@@ -396,7 +396,7 @@ var freyja_wion = (function () {
     var result = [];
     for (var key in collection) {
       if (predicate(collection[key], key, collection) == true) {
-        result.push(predicate(collection[key]));
+        result.push(collection[key]);
       }
     }
     return result;
@@ -424,7 +424,84 @@ var freyja_wion = (function () {
     }
     return true;
   }
-// ----------------------------------------------------------
+  function differenceBy(array, ...values) {
+    var array1 = values.slice(0, values.length - 1)[0];
+    var func = values.pop();
+    var predicate = iteratee(func);
+    var arr = [];
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array1.length; j++) {
+        if (predicate(array[i]) !== predicate(array1[j])) {
+          arr.push(array[i]);
+        }
+      }
+    }
+    return arr;
+  }
+  function differenceWith(array, ...values) {
+    var array1 = values.slice(0, values.length - 1)[0];
+    var func = values.pop();
+    var predicate = iteratee(func);
+    var arr = [];
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array1.length; j++) {
+        if (!func(array[i], array1[j])) {
+          arr.push(array[i]);
+        }
+      }
+    }
+    return arr;
+  }
+  function dropRightWhile(array, predicate) {
+    var predicate = iteratee(predicate);
+    for (let i = array.length - 1; i > 0; i--) {
+      if (predicate(array[i])) {
+        array.pop();
+      }
+    }
+    return array;
+  }
+  function dropWhile(array, predicate) {
+    var predicate = iteratee(predicate);
+    for (let i = 0; i < array.length; i++) {
+      if (predicate(array[i])) {
+        array.splice(i, 1);
+        i--;
+      }
+    }
+    return array;
+  }
+  function intersectionBy(...arrays) {
+    var predicate = iteratee(arrays.pop());
+    var arr1 = arrays[0];
+    var arr2 = arrays[1];
+    var arr = [];
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (predicate(arr1[i]) == predicate(arr2[j])) {
+          arr.push(arr1[i]);
+          break;
+        }
+      }
+    }
+    return arr;
+  }
+  function intersectionWith(...arrays) {
+    var predicate = iteratee(arrays.pop());
+    var arr1 = arrays[0];
+    var arr2 = arrays[1];
+    var arr = [];
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (predicate(arr1[i], arr2[j])) {
+          arr.push(arr1[i]);
+          break;
+        }
+      }
+    }
+    return arr;
+  }
+  // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
     return function (...args) {
@@ -524,7 +601,13 @@ var freyja_wion = (function () {
       return matchesProperty(...predicate);
     }
     if (typeof predicate == "object") {
-      return matches(...predicate);
+      if (!Object.keys(predicate).length) return true;
+      return (o) => {
+        for (var item in predicate) {
+          if (o[item] == undefined || o[item] !== predicate[item]) return false;
+        }
+        return true;
+      };
     }
   }
   return {
@@ -566,6 +649,12 @@ var freyja_wion = (function () {
     sortedLastIndex: sortedLastIndex,
     map: map,
     filter: filter,
-    isEqual:isEqual
+    isEqual: isEqual,
+    differenceBy: differenceBy,
+    differenceWith: differenceWith,
+    dropRightWhile: dropRightWhile,
+    dropWhile: dropWhile,
+    intersectionBy: intersectionBy,
+    intersectionWith: intersectionWith,
   };
 })();
