@@ -1,6 +1,4 @@
 var freyja_wion = (function () {
-  //将数组（array）拆分成多个 size 长度的区块，并将这些区块组成一个新数组。
-  //如果array 无法被分割成全部等长的区块，那么最后剩余的元素将组成一个区块。
   function chunk(array, size) {
     var arr = [];
     var j = 0;
@@ -18,8 +16,6 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //创建一个新数组，包含原数组中所有的非假值元素。
-  //例如false, null, 0, "", undefined, 和 NaN 都是被认为是“假值”。
   function compact(array) {
     var arr = [];
     for (let i = 0; i < array.length; i++) {
@@ -29,7 +25,6 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //创建一个具有唯一array值的数组，每个值不包含在其他给定的数组中。
   function difference(array, ...values) {
     var arr = [];
     for (let i = 0; i < values.length; i++) {
@@ -47,8 +42,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //创建一个去重后的array数组副本。使用了SameValueZero 做等值比较。
-  //只有第一次出现的元素才会被保留。
   function uniq(array) {
     for (let i = 0; i < array.length; i++) {
       for (let j = i + 1; j < array.length; j++) {
@@ -60,7 +53,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //减少一级array嵌套深度。
   function flatten(array) {
     var result = [];
     for (let i = 0; i < array.length; i++) {
@@ -75,7 +67,6 @@ var freyja_wion = (function () {
     }
     return result;
   }
-  //将array递归为一维数组。
   function flattenDeep(array) {
     var result = [];
     for (let i = 0; i < array.length; i++) {
@@ -91,7 +82,6 @@ var freyja_wion = (function () {
     }
     return result;
   }
-  //根据 depth 递归减少 array 的嵌套层级
   function flattenDepth(array, depth) {
     if (depth == 0) {
       return array;
@@ -110,7 +100,6 @@ var freyja_wion = (function () {
     }
     return result;
   }
-  //创建一个切片数组，去除array前面的n个元素。（n默认值为1。）
   function drop(array, n) {
     if (n == undefined) {
       n = 1;
@@ -120,7 +109,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //创建一个切片数组，去除array尾部的n个元素。（n默认值为1。）
   function dropRight(array, n) {
     if (n == undefined) {
       n = 1;
@@ -130,7 +118,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //将 array 中的所有元素转换为由 separator 分隔的字符串。
   function join(array, str) {
     var str1 = String(array);
     str1 = str1.replace(",", str);
@@ -141,7 +128,6 @@ var freyja_wion = (function () {
     }
     return str1;
   }
-  //与_.toPairs正好相反；这个方法返回一个由键值对pairs构成的对象。
   function fromPairs(pairs) {
     var map = {};
     for (let i = 0; i < pairs.length; i++) {
@@ -149,20 +135,17 @@ var freyja_wion = (function () {
     }
     return map;
   }
-  //获取数组 array 的第一个元素。
   function head(array) {
     for (let i = 0; i < array.length; i++) {
       return array[0];
     }
   }
-  //使用 value 值来填充（替换） array，从start位置开始, 到end位置结束（但不包含end位置）。
   function fill(array, value, start = 0, end = array.length) {
     for (let i = start; i < end; i++) {
       array[i] = value;
     }
     return array;
   }
-  //创建一个新数组，将array与任何数组 或 值连接在一起。
   function concat(array, ...values) {
     var arr = [];
     for (let i = 0; i < array.length; i++) {
@@ -179,11 +162,9 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //获取array中的最后一个元素。
   function last(array) {
     return array[array.length - 1];
   }
-  //反转array，使得第一个元素变为最后一个元素，第二个元素变为倒数第二个元素，依次类推。
   function reverse(array) {
     var l = array.length;
     for (let i = 0; i < l >> 1; i++) {
@@ -194,8 +175,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //创建一个按顺序排列的唯一值的数组。所有给定数组的元素值使用SameValueZero做等值比较。
-  //（注： arrays（数组）的并集，按顺序返回，返回数组的元素是唯一的）
   function union(...arrays) {
     var arr = [];
     for (let i = 0; i < arrays.length; i++) {
@@ -213,8 +192,6 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //使用SameValueZero 等值比较，返回首次 value 在数组array中被找到的 索引值，
-  //如果 fromIndex 为负值，将从数组array尾端索引进行匹配。
   function indexOf(array, value, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       if (array[i] == value) {
@@ -222,7 +199,6 @@ var freyja_wion = (function () {
       }
     }
   }
-  //获取数组array中除了最后一个元素之外的所有元素（注：去除数组array中的最后一个元素）。
   function initial(array) {
     var arr = [];
     for (let i = 0; i < array.length - 1; i++) {
@@ -230,8 +206,6 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //创建唯一值的数组，这个数组包含所有给定数组都包含的元素，
-  //使用SameValueZero进行相等性比较。（注：可以理解为给定数组的交集）
   function intersection(...arrays) {
     var map = {};
     for (let i = 0; i < arrays.length; i++) {
@@ -252,7 +226,6 @@ var freyja_wion = (function () {
     }
     return arr;
   }
-  //移除数组array中所有和给定值相等的元素，使用SameValueZero 进行全等比较。
   function pull(array, ...values) {
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < values.length; j++) {
@@ -265,7 +238,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //获取array数组的第n个元素。如果n为负数，则返回从数组结尾开始的第n个元素。
   function nth(array, n) {
     for (let i = 0; i < array.length; i++) {
       if (n >= 0) {
@@ -279,7 +251,6 @@ var freyja_wion = (function () {
       }
     }
   }
-  //这个方法类似_.indexOf ，区别是它是从右到左遍历array的元素。
   function lastIndexOf(array, value, fromIndex = array.length - 1) {
     for (let i = fromIndex; i >= 0; i--) {
       if (array[i] == value) {
@@ -288,7 +259,6 @@ var freyja_wion = (function () {
     }
     return -1;
   }
-  //计算 array 中值的总和
   function sum(array) {
     var total = 0;
     for (let i = 0; i < array.length; i++) {
@@ -296,9 +266,6 @@ var freyja_wion = (function () {
     }
     return total;
   }
-  //这个方法类似_.summin 除了它接受 iteratee
-  //来调用 array中的每一个元素，来生成其值排序的标准。
-  //iteratee 会调用1个参数: (value) 。
   function sumBy(array, predicate) {
     predicate = iteratee(predicate);
     var total = 0;
@@ -307,8 +274,6 @@ var freyja_wion = (function () {
     }
     return total;
   }
-  //调用 iteratee 遍历 collection(集合) 中的每个元素， iteratee 调用3个参数： (value, index | key, collection) 。
-  //如果迭代函数（iteratee）显式的返回 false ，迭代会提前退出。
   function forEach(array, predicate) {
     predicate = iteratee(predicate);
     for (var i = 0; i < array.length; i++) {
@@ -318,7 +283,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //该方法类似_.find，区别是该方法返回第一个通过 predicate 判断为真值的元素的索引值（index），而不是元素本身。
   function findIndex(array, predicate) {
     predicate = iteratee(predicate);
     for (let i = 0; i < array.length; i++) {
@@ -328,7 +292,6 @@ var freyja_wion = (function () {
     }
     return -1;
   }
-  //这个方式类似_.findIndex， 区别是它是从右到左的迭代集合array中的元素。
   function findLastIndex(array, predicate, fromIndex = array.length - 1) {
     predicate = iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
@@ -338,7 +301,6 @@ var freyja_wion = (function () {
     }
     return -1;
   }
-  //这个方法类似_.pull，区别是这个方法接收一个要移除值的数组。
   function pullAll(array, values) {
     var idx = values[0];
     var l = values.length;
@@ -352,7 +314,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //转化value为属性路径的数组
   function toPath(val) {
     if (Array.isArray(val)) {
       return val;
@@ -364,8 +325,6 @@ var freyja_wion = (function () {
         .reduce((ary, it) => ary.concat(it.split(".")), []);
     }
   }
-  //这个方法类似于_.pullAll ，区别是这个方法接受一个 iteratee（迭代函数） 调用 array 和 values的每个值以产生一个值，
-  //通过产生的值进行了比较。iteratee 会传入一个参数： (value) 。
   function pullAllBy(array, values, predicate) {
     for (let i = 0; i < array.length; i++) {
       if (values.map((item) => item[predicate]).includes(array[i][predicate])) {
@@ -375,8 +334,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //这个方法类似于_.pullAll，区别是这个方法接受 comparator 调
-  //用array中的元素和values比较。comparator 会传入两个参数：(arrVal, othVal) 。
   function pullAllWith(array, values, comparator) {
     for (let i = 0; i < values.length; i++) {
       for (let j = 0; j < array.length; j++) {
@@ -388,8 +345,6 @@ var freyja_wion = (function () {
     }
     return array;
   }
-  //使用二进制的方式检索来决定 value值 应该插入到数组中
-  //尽可能小的索引位置，以保证array的排序。
   function sortedIndex(array, value) {
     for (let i = 0; i < array.length; i++) {
       if (array[i] >= value) {
@@ -397,8 +352,6 @@ var freyja_wion = (function () {
       }
     }
   }
-  //这个方法类似_.sortedIndex ，除了它接受一个 iteratee （迭代函数），调用每一个数组（array）元素
-  //，返回结果和value 值比较来计算排序。iteratee 会传入一个参数：(value) 。
   function sortedIndexBy(array, value, predicate) {
     predicate = iteratee(predicate);
     for (let i = 0; i < array.length; i++) {
@@ -407,45 +360,51 @@ var freyja_wion = (function () {
       }
     }
   }
-  //这个方法类似_.indexOf，除了它是在已经排序的数组array上执行二进制检索。
   function sortedIndexOf(array, value) {
     for (let i = 0; i < array.length; i++) {
       if (array[i] == value) {
         return i;
       }
     }
-    return -1
+    return -1;
   }
-  //此方法类似于_.sortedIndex，除了 它返回 value值 在 array 中尽可能大的索引位置（index）。
   function sortedLastIndex(array, value) {
-    for (let i = array.length-1; i >0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       if (array[i] <= value) {
         return i;
       }
     }
   }
-  //这个方法类似_.sortedLastIndex ，除了它接受一个 iteratee （迭代函数），调用每一个数组（array）
-  //元素，返回结果和value 值比较来计算排序。iteratee 会传入一个参数：(value) 。
   function sortedIndexBy(array, value, predicate) {
     predicate = iteratee(predicate);
-    for (let i = array.length; i >=0; i--) {
+    for (let i = array.length; i >= 0; i--) {
       if (predicate(array[i]) <= predicate(value)) {
         return i;
       }
     }
   }
-  // 传入什么属性名，它返回的函数就用来获取对象的什么属性名
-  function property(prop) {
-    // a.b
-    return get.bind(null, window, prop);
-    // return function(obj) {
-    //   return get(obj, prop)
-    // }
+  function map(collection, predicate) {
+    var predicate = iteratee(predicate);
+    var result = [];
+    for (var key in collection) {
+      result.push(predicate(collection[key], key, collection));
+    }
+    return result;
   }
-  function isObject(obj) {
-    return typeof obj === "object" && obj != null;
+  function filter(collection, predicate) {
+    var predicate = iteratee(predicate);
+    var result = [];
+    for (var key in collection) {
+      if (predicate(collection[key], key, collection) == true) {
+        result.push(predicate(collection[key]));
+      }
+    }
+    return result;
   }
   function isEqual(obj1, obj2) {
+    function isObject(obj) {
+      return typeof obj === "object" && obj != null;
+    }
     if (!isObject(obj1) || !isObject(obj2)) {
       return obj1 === obj2;
     }
@@ -465,6 +424,7 @@ var freyja_wion = (function () {
     }
     return true;
   }
+// ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
     return function (...args) {
@@ -488,17 +448,8 @@ var freyja_wion = (function () {
   }
   bind.placeholder = NaN;
 
-  // function f(a,b) {
-  //   return Math.max(10,a,b)
-  // }
-  // var f = Math.max.bind(null, 10)
-
   function get(object, path, defaultVal = undefined) {
     path = toPath(path);
-    // return path.reduce((obj, curPath) => {
-    //   return obj[curPath]
-    // }, object)
-
     for (var i = 0; i < path.length; i++) {
       if (object == undefined) {
         return defaultVal;
@@ -539,16 +490,27 @@ var freyja_wion = (function () {
     return true;
   }
 
-  function matches(src) {
-    // return bind(isMatch, null, window, src)
+  // 传入什么属性名，它返回的函数就用来获取对象的什么属性名
+  function property(prop) {
     return function (obj) {
-      return isMatch(obj, src);
+      return obj[prop];
     };
   }
-
-  function matchesProperty(path, val) {
+  function matches(obj) {
+    return function (src) {
+      for (var key in obj) {
+        if (obj[key] !== src[key]) {
+          return false;
+        }
+      }
+      return true;
+    };
+  }
+  function matchesProperty(ary) {
+    var key = ary[0];
+    var val = ary[1];
     return function (obj) {
-      return isEqual(get(obj, path), val);
+      return obj[key] == val;
     };
   }
   function iteratee(predicate) {
@@ -562,7 +524,7 @@ var freyja_wion = (function () {
       return matchesProperty(...predicate);
     }
     if (typeof predicate == "object") {
-      return matches(predicate);
+      return matches(...predicate);
     }
   }
   return {
@@ -601,6 +563,9 @@ var freyja_wion = (function () {
     sortedIndex: sortedIndex,
     sortedIndexBy: sortedIndexBy,
     sortedIndexOf: sortedIndexOf,
-    sortedLastIndex:sortedLastIndex,
+    sortedLastIndex: sortedLastIndex,
+    map: map,
+    filter: filter,
+    isEqual:isEqual
   };
 })();
