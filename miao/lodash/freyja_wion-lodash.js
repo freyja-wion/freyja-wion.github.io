@@ -595,16 +595,18 @@ var freyja_wion = (function () {
       return predicate;
     }
     if (typeof predicate == "string") {
-      return property(predicate);
+      return (obj) => obj[predicate];
     }
     if (Array.isArray(predicate)) {
-      return matchesProperty(...predicate);
+      //if (predicate.length < 2) return false;
+      return (obj) => obj[predicate[0]] === predicate[1];
     }
     if (typeof predicate == "object") {
-      if (!Object.keys(predicate).length) return true;
-      return (o) => {
+      //if (!Object.keys(predicate).length) return true;
+      return (obj) => {
         for (var item in predicate) {
-          if (o[item] == undefined || o[item] !== predicate[item]) return false;
+          if (obj[item] == undefined || obj[item] !== predicate[item])
+            return false;
         }
         return true;
       };
