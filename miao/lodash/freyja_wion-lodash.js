@@ -501,6 +501,69 @@ var freyja_wion = (function () {
     }
     return arr;
   }
+  function sortedLastIndexBy(array, value, predicate) {
+    var predicate = iteratee(predicate);
+    for (let i = 0; i < array.length; i++) {
+      if (predicate(array[i]) == predicate(value)) {
+        return array.length - 1 - i;
+      }
+    }
+    return -1;
+  }
+  function sortedLastIndexOf(array, value) {
+    for (let i = array.length - 1; i > 0; i--) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+  }
+  function sortedUniq(array) {
+    var arr = [array[0]];
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] !== array[i - 1]) {
+        arr.push(array[i]);
+      }
+    }
+    return arr;
+  }
+  function sortedUniqBy(array, predicate) {
+    var predicate = iteratee(predicate);
+    var arr = [array[0]];
+    for (let i = 1; i < array.length; i++) {
+      if (predicate(array[i]) !== predicate(array[i - 1])) {
+        arr.push(array[i]);
+      }
+    }
+    return arr;
+  }
+  function tail(array) {
+    return array.slice(1);
+  }
+  function take(array, n = 1) {
+    return array.slice(0, n);
+  }
+  function takeRight(array, n = 1) {
+    return array.reverse().slice(0, n).reverse();
+  }
+  function takeRightWhile(array, predicate) {
+    var predicate = iteratee(predicate);
+    for (let i = array.length - 1; i >= 0; i--) {
+      if (!predicate(array[i],i,array)) {
+        array.splice(i, 1);
+      }
+    }
+    return array;
+  }
+  function takeWhile(array, predicate) {
+    var predicate = iteratee(predicate);
+    for (let i = 0; i < array.length; i++) {
+      if (!predicate(array[i],i,array)) {
+        array.splice(i, 1);
+        i--;
+      }
+    }
+    return array;
+  }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
@@ -524,7 +587,6 @@ var freyja_wion = (function () {
     };
   }
   bind.placeholder = NaN;
-
   function get(object, path, defaultVal = undefined) {
     path = toPath(path);
     for (var i = 0; i < path.length; i++) {
@@ -566,30 +628,6 @@ var freyja_wion = (function () {
     }
     return true;
   }
-
-  // 传入什么属性名，它返回的函数就用来获取对象的什么属性名
-  function property(prop) {
-    return function (obj) {
-      return obj[prop];
-    };
-  }
-  function matches(obj) {
-    return function (src) {
-      for (var key in obj) {
-        if (obj[key] !== src[key]) {
-          return false;
-        }
-      }
-      return true;
-    };
-  }
-  function matchesProperty(ary) {
-    var key = ary[0];
-    var val = ary[1];
-    return function (obj) {
-      return obj[key] == val;
-    };
-  }
   function iteratee(predicate) {
     if (typeof predicate == "function") {
       return predicate;
@@ -598,11 +636,9 @@ var freyja_wion = (function () {
       return (obj) => obj[predicate];
     }
     if (Array.isArray(predicate)) {
-      //if (predicate.length < 2) return false;
       return (obj) => obj[predicate[0]] === predicate[1];
     }
     if (typeof predicate == "object") {
-      //if (!Object.keys(predicate).length) return true;
       return (obj) => {
         for (var item in predicate) {
           if (obj[item] == undefined || obj[item] !== predicate[item])
@@ -658,5 +694,14 @@ var freyja_wion = (function () {
     dropWhile: dropWhile,
     intersectionBy: intersectionBy,
     intersectionWith: intersectionWith,
+    sortedLastIndexBy: sortedLastIndexBy,
+    sortedLastIndexOf: sortedLastIndexOf,
+    sortedUniq: sortedUniq,
+    sortedUniqBy: sortedUniqBy,
+    tail: tail,
+    take: take,
+    takeRight: takeRight,
+    takeRightWhile: takeRightWhile,
+    takeWhile:takeWhile
   };
 })();
