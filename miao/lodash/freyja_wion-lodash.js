@@ -733,7 +733,7 @@ var freyja_wion = (function () {
     // }
     if (typeof predicate == "string") {
       return function (obj) {
-        return obj[prdicate]
+        return obj[predicate]
       }
     }
     if (Array.isArray(predicate)) {
