@@ -813,6 +813,35 @@ var freyja_wion = (function () {
     }
     return map
   }
+  function includes(collection, value, index = 0) {
+    if (Array.isArray(collection)) {
+      for (let i = index; i < collection.length; i++) {
+        if (collection[i] == value) {
+          return true
+        }
+      }
+      return false
+    }
+    if (typeof collection == "object") {
+      for (var key in collection) {
+        if (collection[key] == value) {
+          return true
+        }
+      }
+      return false
+    }
+    if (typeof collection == "string") {
+      var j = 0
+      var l = 0
+      for (let i = 0; i < collection.length; i++) {
+        if (collection[i] == value[j]) {
+          j++
+          l++
+        }
+      }
+      return value.length == l
+    }
+  }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
@@ -976,6 +1005,6 @@ var freyja_wion = (function () {
     flatMapDepth: flatMapDepth,
     forEachRight: forEachRight,
     groupBy: groupBy,
-    
+    includes: includes,
   }
 })()
