@@ -757,6 +757,62 @@ var freyja_wion = (function () {
     }
     return flag
   }
+  function find(collection, predicate, index = 0) {
+    var predicate = iteratee(predicate)
+    for (let i = index; i < collection.length; i++) {
+      if (predicate(collection[i])) {
+        return collection[i]
+      }
+    }
+    return -1
+  }
+  function findLast(collection, predicate, index = collection.length - 1) {
+    var predicate = iteratee(predicate)
+    for (let i = index; i >= 0; i--) {
+      if (predicate(collection[i])) {
+        return collection[i]
+      }
+    }
+    return -1
+  }
+  function flatMap(collection, predicate) {
+    var predicate = iteratee(predicate)
+    return flatten(collection.map((it) => predicate(it)))
+  }
+  function flatMapDeep(collection, predicate) {
+    var predicate = iteratee(predicate)
+    return flattenDeep(collection.map((it) => predicate(it)))
+  }
+  function flatMapDepth(collection, predicate, depth = 1) {
+    var predicate = iteratee(predicate)
+    return flattenDeep(
+      collection.map((it) => predicate(it)),
+      depth
+    )
+  }
+  function forEachRight(collection, predicate) {
+    predicate = iteratee(predicate)
+    for (var i = collection.length - 1; i >= 0; i--) {
+      if (predicate(collection[i], i) === false) {
+        break
+      }
+    }
+    return collection
+  }
+  function groupBy(collection, predicate) {
+    var predicate = iteratee(predicate)
+    var map = {}
+    for (let i = 0; i < collection.length; i++) {
+      var c = predicate(collection[i])
+      if (c in map) {
+        map[c].push(collection[i])
+      } else {
+        map[c] = []
+        map[c].push(collection[i])
+      }
+    }
+    return map
+  }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
@@ -913,5 +969,13 @@ var freyja_wion = (function () {
     zipWith: zipWith,
     countBy: countBy,
     every: every,
+    find: find,
+    findLast: findLast,
+    flatMap: flatMap,
+    flatMapDeep: flatMapDeep,
+    flatMapDepth: flatMapDepth,
+    forEachRight: forEachRight,
+    groupBy: groupBy,
+    
   }
 })()
