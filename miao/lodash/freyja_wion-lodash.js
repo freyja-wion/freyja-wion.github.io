@@ -649,17 +649,113 @@ var freyja_wion = (function () {
   }
   function xor(...arrays) {
     var arr = flatten(arrays)
+    var map = {}
+    var arr1 = []
     for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[i] == arr[j]) {
-          arr.splice(i, 1)
-          arr.splice(j - 1, 1)
-          i--
-          j--
-        }
+      if (arr[i] in map) {
+        map[arr[i]]++
+      } else {
+        map[arr[i]] = 1
       }
     }
+    for (let i = 0; i < arr.length; i++) {
+      if (map[arr[i]] == 1) {
+        arr1.push(arr[i])
+      }
+    }
+    return arr1
+  }
+  function xorBy(...arrays) {
+    var predicate = iteratee(arrays.pop())
+    var arr = flatten(arrays)
+    var map = {}
+    var arr1 = []
+    for (let i = 0; i < arr.length; i++) {
+      if (predicate(arr[i]) in map) {
+        map[predicate(arr[i])]++
+      } else {
+        map[predicate(arr[i])] = 1
+      }
+    }
+    for (let i = 0; i < arr.length; i++) {
+      if (map[predicate(arr[i])] == 1) {
+        arr1.push(arr[i])
+      }
+    }
+    return arr1
+  }
+  function xorWith(...arrays) {
+    var predicate = iteratee(arrays.pop())
+    var arr = flatten(arrays)
+    var arr1 = []
+    var isSame
+    for (let i = 0; i < arr.length - 1; i++) {
+      isSame = true
+      for (let j = i + 1; j < arr.length; j++) {
+        if (predicate(arr[i], arr[j])) {
+          isSame = false
+        }
+      }
+      if (isSame) {
+        arr1.push(arr[i])
+      }
+    }
+    return arr1
+  }
+  function zip(...arrays) {
+    var arr = []
+    for (let i = 0; i < arrays[0].length; i++) {
+      var item = []
+      for (let j = 0; j < arrays.length; j++) {
+        item.push(arrays[j][i])
+      }
+      arr.push(item)
+    }
     return arr
+  }
+  function zipObject(props, values) {
+    var map = {}
+    for (let i = 0; i < props.length; i++) {
+      map[props[i]] = values[i]
+    }
+    return map
+  }
+  function zipWith(...arrays) {
+    var predicate = iteratee(arrays.pop())
+    var arr = []
+    for (let i = 0; i < arrays[0].length; i++) {
+      var item = []
+      for (let j = 0; j < arrays.length; j++) {
+        item.push(arrays[j][i])
+      }
+      arr.push(item)
+    }
+    return arr.map((it) => predicate(...it))
+  }
+  function countBy(collection, predicate) {
+    var predicate = iteratee(predicate)
+    var map = {}
+    for (let i = 0; i < collection.length; i++) {
+      var p = predicate(collection[i])
+      if (p in map) {
+        map[p]++
+      } else {
+        map[p] = 1
+      }
+    }
+    return map
+  }
+  function every(collection, predicate) {
+    var predicate = iteratee(predicate)
+    var flag = false
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate(collection[i])) {
+        flag = true
+      } else {
+        return false
+      }
+    }
+    return flag
   }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
@@ -729,9 +825,6 @@ var freyja_wion = (function () {
     if (typeof predicate == "function") {
       return predicate
     }
-    // if (typeof predicate == "string") {
-    //   return (obj) => obj[predicate];
-    // }
     if (typeof predicate == "string") {
       return function (obj) {
         return obj[predicate]
@@ -813,5 +906,12 @@ var freyja_wion = (function () {
     unzipWith: unzipWith,
     without: without,
     xor: xor,
+    xorBy: xorBy,
+    xorWith: xorWith,
+    zip: zip,
+    zipObject: zipObject,
+    zipWith: zipWith,
+    countBy: countBy,
+    every: every,
   }
 })()
