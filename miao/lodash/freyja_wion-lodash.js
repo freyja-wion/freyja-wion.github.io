@@ -842,6 +842,19 @@ var freyja_wion = (function () {
       return value.length == l
     }
   }
+  function invokeMap(collection, path, ...args) {
+    if (typeof path == "string") {
+      return collection.map((it) => it[path](...args))
+    } else if (typeof path == "function") {
+      return collection.map((it) => path.call(it, ...args))
+    }
+  }
+  function keyBy(collection, predicate) {
+    var predicate = iteratee(predicate)
+    var map = {}
+    collection.forEach((it) => (map[predicate(it)] = it))
+    return map
+  }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
@@ -1006,5 +1019,8 @@ var freyja_wion = (function () {
     forEachRight: forEachRight,
     groupBy: groupBy,
     includes: includes,
+    invokeMap: invokeMap,
+    keyBy: keyBy,
+    
   }
 })()
