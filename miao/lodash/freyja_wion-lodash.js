@@ -969,8 +969,57 @@ var freyja_wion = (function () {
   }
   function castArray(value) {
     var arr = []
-    arr.push(value)
+    if (value) {
+      arr.push(value)
+    }
     return arr
+  }
+  function conformsTo(object, source) {
+    for (var key in source) {
+      if (!source[key](object[key])) {
+        return false
+      }
+    }
+    return true
+  }
+  function eq(value, other) {
+    return value === other || (value !== value && other !== other)
+  }
+  function gt(value, other) {
+    return value > other
+  }
+  function gte(value, other) {
+    return value >= other
+  }
+  function isArguments(value) {
+    return Object.prototype.toString.call(value) == "[object Arguments]"
+  }
+  function isArray(value) {
+    return Object.prototype.toString.call(value) == "[object Array]"
+  }
+  function isArrayBuffer(value) {
+    return Object.prototype.toString.call(value) == "[object ArrayBuffer]"
+  }
+  function isArrayLike(value) {
+    return typeof value != "function" && value.length >= 0
+  }
+  function isArrayLikeObject(value) {
+    return isArrayLike(value) && typeof value == "object"
+  }
+  function isBoolean(value) {
+    return Object.prototype.toString.call(value) == "[object Boolean]"
+  }
+  function isDate(value) {
+    return Object.prototype.toString.call(value) == "[object Date]"
+  }
+  function isElement(value) {
+    return Object.prototype.toString.call(value) == "[object HTMLBodyElement]"
+  }
+  function isEmpty(value) {
+    for (var key in value) {
+      return false
+    }
+    return true
   }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
@@ -1150,5 +1199,18 @@ var freyja_wion = (function () {
     defer: defer,
     delay: delay,
     castArray: castArray,
+    conformsTo: conformsTo,
+    eq: eq,
+    gt: gt,
+    gte: gte,
+    isArguments: isArguments,
+    isArray: isArray,
+    isArrayBuffer: isArrayBuffer,
+    isArrayLike: isArrayLike,
+    isArrayLikeObject: isArrayLikeObject,
+    isBoolean: isBoolean,
+    isDate: isDate,
+    isElement: isElement,
+    isEmpty: isEmpty,
   }
 })()
