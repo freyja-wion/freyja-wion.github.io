@@ -871,7 +871,7 @@ var freyja_wion = (function () {
     arr.push(arr2)
     return arr
   }
-  function reduce(collection, predicate, accumlator) {
+  function reduce(collection, predicate, accumlator = 0) {
     var result = accumlator
     var predicate = iteratee(predicate)
     if (Array.isArray(collection)) {
@@ -887,11 +887,11 @@ var freyja_wion = (function () {
       return result
     }
   }
-  function reduceRight(collection, predicate, accumlator) {
+  function reduceRight(collection, predicate, accumlator = 0) {
     var result = accumlator
     var predicate = iteratee(predicate)
     if (Array.isArray(collection)) {
-      for (let i = collection.length-1; i >=0; i--) {
+      for (let i = collection.length - 1; i >= 0; i--) {
         result = predicate(result, collection[i])
       }
       return result
@@ -905,11 +905,13 @@ var freyja_wion = (function () {
   }
   function reject(collection, predicate) {
     var predicate = iteratee(predicate)
+    var arr = []
     for (var key in collection) {
       if (!predicate(collection[key], key, collection)) {
-        return collection[key]
+        arr.push(collection[key])
       }
     }
+    return arr
   }
   function sample(collection) {
     return collection[Math.floor(Math.random() * collection.length)]
@@ -959,11 +961,16 @@ var freyja_wion = (function () {
     }
     return false
   }
-  function defer(func,args) {
-    return setTimeout(func(args), 1);
+  function defer(func, args) {
+    return setTimeout(func(args), 1) - 1
   }
-  function delay(func,wait,args) {
-    return setTimeout(func(args), wait);
+  function delay(func, wait, args) {
+    return setTimeout(func(args), wait) - 1
+  }
+  function castArray(value) {
+    var arr = []
+    arr.push(value)
+    return arr
   }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
@@ -1133,7 +1140,7 @@ var freyja_wion = (function () {
     keyBy: keyBy,
     partition: partition,
     reduce: reduce,
-    reduceRight:reduceRight,
+    reduceRight: reduceRight,
     reject: reject,
     sample: sample,
     sampleSize: sampleSize,
@@ -1142,6 +1149,6 @@ var freyja_wion = (function () {
     some: some,
     defer: defer,
     delay: delay,
-    
+    castArray: castArray,
   }
 })()
