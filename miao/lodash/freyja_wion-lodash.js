@@ -855,6 +855,116 @@ var freyja_wion = (function () {
     collection.forEach((it) => (map[predicate(it)] = it))
     return map
   }
+  function partition(collection, predicate) {
+    var arr1 = []
+    var arr2 = []
+    var predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate(collection[i])) {
+        arr1.push(collection[i])
+      } else {
+        arr2.push(collection[i])
+      }
+    }
+    var arr = []
+    arr.push(arr1)
+    arr.push(arr2)
+    return arr
+  }
+  function reduce(collection, predicate, accumlator) {
+    var result = accumlator
+    var predicate = iteratee(predicate)
+    if (Array.isArray(collection)) {
+      for (let i = 0; i < collection.length; i++) {
+        result = predicate(result, collection[i])
+      }
+      return result
+    }
+    if (typeof collection == "object") {
+      for (var key in collection) {
+        result = predicate(result, collection[key], key, collection)
+      }
+      return result
+    }
+  }
+  function reduceRight(collection, predicate, accumlator) {
+    var result = accumlator
+    var predicate = iteratee(predicate)
+    if (Array.isArray(collection)) {
+      for (let i = collection.length-1; i >=0; i--) {
+        result = predicate(result, collection[i])
+      }
+      return result
+    }
+    if (typeof collection == "object") {
+      for (var key in collection) {
+        result = predicate(result, collection[key], key, collection)
+      }
+      return result
+    }
+  }
+  function reject(collection, predicate) {
+    var predicate = iteratee(predicate)
+    for (var key in collection) {
+      if (!predicate(collection[key], key, collection)) {
+        return collection[key]
+      }
+    }
+  }
+  function sample(collection) {
+    return collection[Math.floor(Math.random() * collection.length)]
+  }
+  function sampleSize(collection, n = 1) {
+    var arr = []
+    var count = 0
+    if (collection.length < n) {
+      n = collection.length
+    }
+    while (count < n) {
+      var i = collection[Math.floor(Math.random() * collection.length)]
+      if (arr.includes(i)) {
+        continue
+      }
+      arr.push(i)
+      count++
+    }
+    return arr
+  }
+  function shuffle(collection) {
+    var arr = []
+    var count = 0
+    while (count < collection.length) {
+      var i = collection[Math.floor(Math.random() * collection.length)]
+      if (arr.includes(i)) {
+        continue
+      }
+      arr.push(i)
+      count++
+    }
+    return arr
+  }
+  function size(collection) {
+    if (Array.isArray(collection) || typeof collection == "string") {
+      return collection.length
+    } else if (typeof collection == "object") {
+      return Object.keys(collection).length
+    }
+  }
+  function some(collection, predicate) {
+    var predicate = iteratee(predicate)
+    for (var item in collection) {
+      if (predicate(item)) {
+        return true
+      }
+    }
+    return false
+  }
+  function defer(func,args) {
+    return setTimeout(func(args), 1);
+  }
+  function delay(func,wait,args) {
+    return setTimeout(func(args), wait);
+  }
   // ----------------------------------------------------------
   function bind(f, thisArg, ...fixedArgs) {
     // bind(f, {}, 1, _, _, 3, _, 4)
@@ -1021,6 +1131,17 @@ var freyja_wion = (function () {
     includes: includes,
     invokeMap: invokeMap,
     keyBy: keyBy,
+    partition: partition,
+    reduce: reduce,
+    reduceRight:reduceRight,
+    reject: reject,
+    sample: sample,
+    sampleSize: sampleSize,
+    shuffle: shuffle,
+    size: size,
+    some: some,
+    defer: defer,
+    delay: delay,
     
   }
 })()
