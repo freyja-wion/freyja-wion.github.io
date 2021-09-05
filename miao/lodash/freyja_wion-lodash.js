@@ -968,11 +968,10 @@ var freyja_wion = (function () {
     return setTimeout(func(args), wait) - 1
   }
   function castArray(value) {
-    var arr = []
-    if (value) {
-      arr.push(value)
+    if (arguments.length == 0) {
+      return []
     }
-    return arr
+    return [value]
   }
   function conformsTo(object, source) {
     for (var key in source) {
